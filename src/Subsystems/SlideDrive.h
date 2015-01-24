@@ -10,8 +10,8 @@ public:
 	SlideDrive();
 	void InitDefaultCommand();
 
-	void HandleDrive(Joystick* left, Joystick* right);
-	void HandleSlide(Joystick* left, Joystick* right);
+	void HandleDrive(Joystick& left, Joystick& right);
+	void HandleSlide(Joystick& left, Joystick& right);
 	void Stop();
 
 private:

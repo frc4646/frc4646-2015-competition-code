@@ -5,10 +5,24 @@
 
 class OI
 {
-private:
 
 public:
 	OI();
+	Joystick& GetLeftStick();
+	Joystick& GetRightStick();
+	Joystick& GetMechanismStick();
+
+private:
+	Joystick LeftStick;
+	Joystick RightStick;
+	Joystick MechanismStick;
+	JoystickButton GrabberClose;
+	JoystickButton GrabberOpen;
+	JoystickButton IntakeClose;
+	JoystickButton LiftRaise;
+	JoystickButton LiftLower;
+	JoystickButton SlideOnly;
+	JoystickButton SlideAndTank;
 };
 
 #endif

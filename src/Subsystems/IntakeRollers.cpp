@@ -1,5 +1,6 @@
 #include "IntakeRollers.h"
 #include "../RobotMap.h"
+#include "../Commands/IntakeRollerCommand.h"
 
 IntakeRollers::IntakeRollers() :
 		Subsystem("IntakeRollers"),
@@ -12,7 +13,7 @@ IntakeRollers::IntakeRollers() :
 void IntakeRollers::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new IntakeRollerCommand());
 }
 
 void IntakeRollers::SetLeft(float speed) {

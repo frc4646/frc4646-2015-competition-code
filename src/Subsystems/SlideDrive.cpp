@@ -1,5 +1,6 @@
 #include "SlideDrive.h"
 #include "../RobotMap.h"
+#include "../Commands/TankDrive.h"
 
 SlideDrive::SlideDrive() :
 		Subsystem("SlideDrive"),
@@ -14,15 +15,15 @@ SlideDrive::SlideDrive() :
 void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new TankDrive());
 }
 
-void SlideDrive::HandleDrive(Joystick* left, Joystick* right) {
+void SlideDrive::HandleDrive(Joystick& left, Joystick& right) {
 	DriveTrain.TankDrive(left,right);
 }
 
-void SlideDrive::HandleSlide(Joystick* left, Joystick* right) {
-	SlideSpeedController.Set(left->GetRawAxis(2));
+void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
+	SlideSpeedController.Set(left.GetRawAxis(2));
 }
 
 void SlideDrive::Stop() {

@@ -5,7 +5,11 @@
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
-
+Grabber* CommandBase::grabber = NULL;
+IntakeArms* CommandBase::intakearms = NULL;
+IntakeRollers* CommandBase::intakerollers = NULL;
+Lift* CommandBase::lift = NULL;
+SlideDrive* CommandBase::slidedrive = NULL;
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {
@@ -24,4 +28,9 @@ void CommandBase::init()
 	examplesubsystem = new ExampleSubsystem();
 
 	oi = new OI();
+	grabber = new Grabber();
+	intakearms = new IntakeArms();
+	intakerollers = new IntakeRollers();
+	lift = new Lift();
+	slidedrive = new SlideDrive();
 }
