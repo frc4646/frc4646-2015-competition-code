@@ -14,12 +14,14 @@
 // following variables to use with your drivetrain subsystem.
 //const int LEFTMOTOR = 1;
 //const int RIGHTMOTOR = 2;
-const int LEFT_DRIVE_PORT = 0;
-const int RIGHT_DRIVE_PORT = 1;
-const int SLIDE_DRIVE_PORT = 2;
-const int LIFT_DRIVE_PORT = 3;
-const int LEFT_INTAKE_PORT = 4;
-const int RIGHT_INTAKE_PORT = 5;
+const int LEFT_DRIVE_PORT = 8;
+const int RIGHT_DRIVE_PORT = 9;
+const int SLIDE_DRIVE_PORT = 7;
+const int LIFT_DRIVE_PORT = 6;
+const int LIFT_DRIVE_PORT2 = 5;
+const int LEFT_INTAKE_PORT = 10;
+const int RIGHT_INTAKE_PORT = 11;
+//TODO: Make the intake ports the real ones
 
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:

@@ -10,6 +10,7 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	Victor LiftSpeedControl;
+	Victor LiftSpeedControl2;
 public:
 	Lift();
 	void InitDefaultCommand();
