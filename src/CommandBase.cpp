@@ -10,6 +10,7 @@ IntakeArms* CommandBase::intakearms = NULL;
 IntakeRollers* CommandBase::intakerollers = NULL;
 Lift* CommandBase::lift = NULL;
 SlideDrive* CommandBase::slidedrive = NULL;
+bool CommandBase::tankEnabled = true;
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {

@@ -31,6 +31,7 @@ public:
 	static IntakeRollers* intakerollers;
 	static Lift* lift;
 	static SlideDrive* slidedrive;
+	static bool tankEnabled;
 };
 
 #endif

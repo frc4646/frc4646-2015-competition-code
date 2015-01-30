@@ -6,6 +6,7 @@
 #include "Commands/LiftRaiseCommand.h"
 #include "Commands/SlideCommand.h"
 #include "Commands/TankAndSlideCommand.h"
+#include "Commands/SlideOnlyCommand.h"
 
 OI::OI():
 	LeftStick(0),
@@ -25,7 +26,7 @@ OI::OI():
 	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
 	LiftRaise.WhileHeld(new LiftRaiseCommand());
 	LiftLower.WhileHeld(new LiftLowerCommand());
-	SlideOnly.WhileHeld(new SlideCommand());
+	SlideOnly.WhileHeld(new SlideOnlyCommand());
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
 }
 

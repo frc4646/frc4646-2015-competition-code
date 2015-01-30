@@ -9,6 +9,10 @@ SlideDrive::SlideDrive() :
 		SlideSpeedController(SLIDE_DRIVE_PORT),
 		DriveTrain(LeftSpeedController,RightSpeedController)
 {
+	DriveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+	DriveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+	DriveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+	DriveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 
 }
 
@@ -23,7 +27,7 @@ void SlideDrive::HandleDrive(Joystick& left, Joystick& right) {
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
-	SlideSpeedController.Set(left.GetRawAxis(2));
+	SlideSpeedController.Set(left.GetRawAxis(0));
 }
 
 void SlideDrive::Stop() {

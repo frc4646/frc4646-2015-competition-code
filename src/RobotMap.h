@@ -14,13 +14,13 @@
 // following variables to use with your drivetrain subsystem.
 //const int LEFTMOTOR = 1;
 //const int RIGHTMOTOR = 2;
-const int LEFT_DRIVE_PORT = 8;
-const int RIGHT_DRIVE_PORT = 9;
+const int LEFT_DRIVE_PORT = 9;
+const int RIGHT_DRIVE_PORT = 8;
 const int SLIDE_DRIVE_PORT = 7;
 const int LIFT_DRIVE_PORT = 6;
 const int LIFT_DRIVE_PORT2 = 5;
-const int LEFT_INTAKE_PORT = 10;
-const int RIGHT_INTAKE_PORT = 11;
+const int LEFT_INTAKE_PORT = 1;
+const int RIGHT_INTAKE_PORT = 2;
 //TODO: Make the intake ports the real ones
 
 // If you are using multiple modules, make sure to define both the port
@@ -29,7 +29,7 @@ const int RIGHT_INTAKE_PORT = 11;
 //const int RANGE_FINDER_MODULE = 1;
 const int GRABBER_OPEN_PORT = 0;
 const int GRABBER_CLOSE_PORT = 1;
-const int INTAKE_ARMS_PORT = 2;
+const int INTAKE_ARMS_PORT = 2; // oh yeah make these real too
 
 const float LIFT_RAISE_SPEED = 0.5;
 const float LIFT_LOWER_SPEED = -0.1;
