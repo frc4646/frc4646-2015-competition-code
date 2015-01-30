@@ -13,6 +13,7 @@ public:
 	void HandleDrive(Joystick& left, Joystick& right);
 	void HandleSlide(Joystick& left, Joystick& right);
 	void Stop();
+	void SetTankEnabled(bool enable);
 
 private:
 	// It's desirable that everything possible under private except
@@ -21,6 +22,7 @@ private:
 	Talon RightSpeedController;
 	Talon SlideSpeedController;
 	RobotDrive DriveTrain;
+	bool TankEnabled;
 
 };
 

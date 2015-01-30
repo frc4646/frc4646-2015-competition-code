@@ -7,7 +7,8 @@ SlideDrive::SlideDrive() :
 		LeftSpeedController(LEFT_DRIVE_PORT),
 		RightSpeedController(RIGHT_DRIVE_PORT),
 		SlideSpeedController(SLIDE_DRIVE_PORT),
-		DriveTrain(LeftSpeedController,RightSpeedController)
+		DriveTrain(LeftSpeedController,RightSpeedController),
+		TankEnabled(true)
 {
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
@@ -23,7 +24,10 @@ void SlideDrive::InitDefaultCommand()
 }
 
 void SlideDrive::HandleDrive(Joystick& left, Joystick& right) {
-	DriveTrain.TankDrive(left,right);
+	if (TankEnabled)
+	{
+		DriveTrain.TankDrive(left,right);
+	}
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
@@ -33,6 +37,10 @@ void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
 void SlideDrive::Stop() {
 	DriveTrain.Drive(0,0);
 	SlideSpeedController.Set(0);
+}
+
+void SlideDrive::SetTankEnabled(bool enable) {
+	TankEnabled = enable;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

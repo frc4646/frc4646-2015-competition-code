@@ -1,5 +1,4 @@
 #include "TankDrive.h"
-#include "RobotMap.h"
 
 TankDrive::TankDrive()
 {
@@ -11,16 +10,12 @@ TankDrive::TankDrive()
 // Called just before this Command runs the first time
 void TankDrive::Initialize()
 {
-
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute()
 {
-	if (CommandBase::tankEnabled)
-	{
-		slidedrive->HandleDrive(oi->GetLeftStick(), oi->GetRightStick());
-	}
+	slidedrive->HandleDrive(oi->GetLeftStick(), oi->GetRightStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()
