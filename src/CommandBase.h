@@ -11,6 +11,7 @@
 #include "Subsystems/IntakeRollers.h"
 #include "Subsystems/Lift.h"
 #include "Subsystems/SlideDrive.h"
+#include "Subsystems/DistanceSensor.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -31,6 +32,7 @@ public:
 	static IntakeRollers* intakerollers;
 	static Lift* lift;
 	static SlideDrive* slidedrive;
+	static DistanceSensor* distancesensor;
 };
 
 #endif

@@ -10,6 +10,7 @@ IntakeArms* CommandBase::intakearms = NULL;
 IntakeRollers* CommandBase::intakerollers = NULL;
 Lift* CommandBase::lift = NULL;
 SlideDrive* CommandBase::slidedrive = NULL;
+DistanceSensor* CommandBase::distancesensor = NULL;
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {
@@ -33,4 +34,5 @@ void CommandBase::init()
 	intakerollers = new IntakeRollers();
 	lift = new Lift();
 	slidedrive = new SlideDrive();
+	distancesensor = new DistanceSensor();
 }

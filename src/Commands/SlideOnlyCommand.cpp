@@ -1,39 +1,40 @@
-#include "GrabberOpenCommand.h"
+#include "SlideOnlyCommand.h"
 
-GrabberOpenCommand::GrabberOpenCommand()
+SlideOnlyCommand::SlideOnlyCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(grabber);
+	Requires(slidedrive);
 }
 
 // Called just before this Command runs the first time
-void GrabberOpenCommand::Initialize()
+void SlideOnlyCommand::Initialize()
 {
-	grabber->Open();
+	slidedrive->SetTankEnabled(false);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void GrabberOpenCommand::Execute()
+void SlideOnlyCommand::Execute()
 {
-
+	slidedrive->HandleSlide(oi->GetLeftStick(), oi->GetRightStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool GrabberOpenCommand::IsFinished()
+bool SlideOnlyCommand::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void GrabberOpenCommand::End()
+void SlideOnlyCommand::End()
 {
-	grabber->Idle();
+	slidedrive->SetTankEnabled(true);
+	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void GrabberOpenCommand::Interrupted()
+void SlideOnlyCommand::Interrupted()
 {
 	End();
 }

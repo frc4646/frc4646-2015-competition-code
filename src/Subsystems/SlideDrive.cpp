@@ -42,5 +42,9 @@ void SlideDrive::Stop() {
 void SlideDrive::SetTankEnabled(bool enable) {
 	TankEnabled = enable;
 }
+
+void SlideDrive::Drive(double speed, double curve) {
+	DriveTrain.Drive(speed, curve);
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

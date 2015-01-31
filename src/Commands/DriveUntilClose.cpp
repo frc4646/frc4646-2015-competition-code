@@ -1,40 +1,45 @@
-#include "TankAndSlideCommand.h"
+#include "DriveUntilClose.h"
 
-TankAndSlideCommand::TankAndSlideCommand()
+DriveUntilClose::DriveUntilClose()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(slidedrive);
+	Requires(CommandBase::slidedrive);
+	Requires(CommandBase::distancesensor);
 }
 
 // Called just before this Command runs the first time
-void TankAndSlideCommand::Initialize()
+void DriveUntilClose::Initialize()
 {
-
+	slidedrive->Drive(.5,0);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TankAndSlideCommand::Execute()
+void DriveUntilClose::Execute()
 {
-	slidedrive->HandleDrive(oi->GetLeftStick(), oi->GetRightStick());
-	slidedrive->HandleSlide(oi->GetLeftStick(), oi->GetRightStick());
+	slidedrive->Drive(.5,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TankAndSlideCommand::IsFinished()
+bool DriveUntilClose::IsFinished()
 {
-	return false;
+	return IsClose();
 }
 
 // Called once after isFinished returns true
-void TankAndSlideCommand::End()
+void DriveUntilClose::End()
 {
 	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TankAndSlideCommand::Interrupted()
+void DriveUntilClose::Interrupted()
 {
 	End();
+}
+
+bool DriveUntilClose::IsClose()
+{
+	return distancesensor->GetDistance() < 30;
 }

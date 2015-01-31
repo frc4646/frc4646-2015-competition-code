@@ -12,6 +12,8 @@ public:
 	Joystick& GetRightStick();
 	Joystick& GetMechanismStick();
 
+	double GetLiftSpeed();
+
 private:
 	Joystick LeftStick;
 	Joystick RightStick;
@@ -23,6 +25,7 @@ private:
 	JoystickButton LiftLower;
 	JoystickButton SlideOnly;
 	JoystickButton SlideAndTank;
+	JoystickButton StraightDrive;
 };
 
 #endif

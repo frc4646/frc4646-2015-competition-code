@@ -1,18 +1,19 @@
-#ifndef TankAndSlideCommand_H
-#define TankAndSlideCommand_H
+#ifndef DriveUntilClose_H
+#define DriveUntilClose_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class TankAndSlideCommand: public CommandBase
+class DriveUntilClose: public CommandBase
 {
 public:
-	TankAndSlideCommand();
+	DriveUntilClose();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+	bool IsClose();
 };
 
 #endif

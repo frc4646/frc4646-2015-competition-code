@@ -14,6 +14,7 @@ public:
 	void HandleSlide(Joystick& left, Joystick& right);
 	void Stop();
 	void SetTankEnabled(bool enable);
+	void Drive(double speed, double curve);
 
 private:
 	// It's desirable that everything possible under private except

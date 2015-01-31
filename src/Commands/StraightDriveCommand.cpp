@@ -1,39 +1,39 @@
-#include "GrabberOpenCommand.h"
+#include "StraightDriveCommand.h"
 
-GrabberOpenCommand::GrabberOpenCommand()
+StraightDriveCommand::StraightDriveCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(grabber);
+	Requires(slidedrive);
 }
 
 // Called just before this Command runs the first time
-void GrabberOpenCommand::Initialize()
+void StraightDriveCommand::Initialize()
 {
-	grabber->Open();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void GrabberOpenCommand::Execute()
+void StraightDriveCommand::Execute()
 {
-
+	slidedrive->HandleDrive(oi->GetLeftStick(), oi->GetLeftStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool GrabberOpenCommand::IsFinished()
+bool StraightDriveCommand::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void GrabberOpenCommand::End()
+void StraightDriveCommand::End()
 {
-	grabber->Idle();
+	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void GrabberOpenCommand::Interrupted()
+void StraightDriveCommand::Interrupted()
 {
 	End();
 }

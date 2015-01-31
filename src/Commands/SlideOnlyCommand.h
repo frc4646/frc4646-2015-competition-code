@@ -1,13 +1,13 @@
-#ifndef TankAndSlideCommand_H
-#define TankAndSlideCommand_H
+#ifndef SlideOnlyCommand_H
+#define SlideOnlyCommand_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class TankAndSlideCommand: public CommandBase
+class SlideOnlyCommand: public CommandBase
 {
 public:
-	TankAndSlideCommand();
+	SlideOnlyCommand();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

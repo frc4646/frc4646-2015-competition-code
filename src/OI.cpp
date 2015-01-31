@@ -7,6 +7,7 @@
 #include "Commands/SlideCommand.h"
 #include "Commands/TankAndSlideCommand.h"
 #include "Commands/SlideOnlyCommand.h"
+#include "Commands/StraightDriveCommand.h"
 
 OI::OI():
 	LeftStick(0),
@@ -18,16 +19,18 @@ OI::OI():
  	LiftRaise(&MechanismStick,6),
  	LiftLower(&MechanismStick,4),
  	SlideOnly(&LeftStick,2),
-	SlideAndTank(&LeftStick,1)
+	SlideAndTank(&LeftStick,1),
+	StraightDrive(&LeftStick,3)
 {
 	// Process operator interface input here.
-	GrabberClose.WhenPressed(new GrabberCloseCommand());
-	GrabberOpen.WhenPressed(new GrabberOpenCommand());
+	GrabberClose.WhileHeld(new GrabberCloseCommand());
+	GrabberOpen.WhileHeld(new GrabberOpenCommand());
 	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
 	LiftRaise.WhileHeld(new LiftRaiseCommand());
 	LiftLower.WhileHeld(new LiftLowerCommand());
 	SlideOnly.WhileHeld(new SlideOnlyCommand());
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
+	StraightDrive.WhileHeld(new StraightDriveCommand());
 }
 
 Joystick& OI::GetLeftStick() {
@@ -40,4 +43,8 @@ Joystick& OI::GetRightStick() {
 
 Joystick& OI::GetMechanismStick() {
 	return MechanismStick;
+}
+
+double OI::GetLiftSpeed() {
+	return (MechanismStick.GetRawAxis(3)*-0.5) + 0.5;
 }

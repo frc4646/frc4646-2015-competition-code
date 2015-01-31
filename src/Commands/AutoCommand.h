@@ -1,13 +1,13 @@
-#ifndef TankAndSlideCommand_H
-#define TankAndSlideCommand_H
+#ifndef AutoCommand_H
+#define AutoCommand_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class TankAndSlideCommand: public CommandBase
+class AutoCommand: public CommandGroup
 {
 public:
-	TankAndSlideCommand();
+	AutoCommand();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

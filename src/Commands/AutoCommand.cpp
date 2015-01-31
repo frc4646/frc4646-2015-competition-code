@@ -1,39 +1,41 @@
-#include "GrabberOpenCommand.h"
+#include "AutoCommand.h"
+#include "DriveUntilClose.h"
 
-GrabberOpenCommand::GrabberOpenCommand()
+AutoCommand::AutoCommand()
+: CommandGroup("AutoCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(grabber);
+	AddSequential(new DriveUntilClose(), 10);
 }
 
 // Called just before this Command runs the first time
-void GrabberOpenCommand::Initialize()
+void AutoCommand::Initialize()
 {
-	grabber->Open();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void GrabberOpenCommand::Execute()
+void AutoCommand::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool GrabberOpenCommand::IsFinished()
+bool AutoCommand::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void GrabberOpenCommand::End()
+void AutoCommand::End()
 {
-	grabber->Idle();
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void GrabberOpenCommand::Interrupted()
+void AutoCommand::Interrupted()
 {
-	End();
+
 }

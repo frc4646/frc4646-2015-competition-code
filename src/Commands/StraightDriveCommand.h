@@ -1,13 +1,13 @@
-#ifndef TankAndSlideCommand_H
-#define TankAndSlideCommand_H
+#ifndef StraightDriveCommand_H
+#define StraightDriveCommand_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class TankAndSlideCommand: public CommandBase
+class StraightDriveCommand: public CommandBase
 {
 public:
-	TankAndSlideCommand();
+	StraightDriveCommand();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

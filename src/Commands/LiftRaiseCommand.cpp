@@ -11,13 +11,13 @@ LiftRaiseCommand::LiftRaiseCommand()
 // Called just before this Command runs the first time
 void LiftRaiseCommand::Initialize()
 {
-	lift->Set(LIFT_RAISE_SPEED);
+	lift->Set(oi->GetLiftSpeed());
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftRaiseCommand::Execute()
 {
-	lift->Set(LIFT_RAISE_SPEED);
+	lift->Set(oi->GetLiftSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()
