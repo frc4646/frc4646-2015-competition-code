@@ -11,11 +11,17 @@ private:
 	// for methods that implement subsystem capabilities
 	Victor LiftSpeedControl;
 	Victor LiftSpeedControl2;
+	Encoder encoder;
+	DigitalInput limitlower;
+	DigitalInput limitupper;
 public:
 	Lift();
 	void InitDefaultCommand();
 	void Set(double speed);
 	void Stop();
+	Encoder& GetEncoder();
+	DigitalInput& GetLimitUpper();
+	DigitalInput& GetLimitLower();
 };
 
 #endif

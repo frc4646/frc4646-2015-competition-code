@@ -35,4 +35,10 @@ void CommandBase::init()
 	lift = new Lift();
 	slidedrive = new SlideDrive();
 	distancesensor = new DistanceSensor();
+	SmartDashboard::PutData(grabber);
+	SmartDashboard::PutData(intakerollers);
+	SmartDashboard::PutData(intakearms);
+	SmartDashboard::PutData(lift);
+	SmartDashboard::PutData(slidedrive);
+	SmartDashboard::PutData(distancesensor);
 }

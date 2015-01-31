@@ -15,6 +15,7 @@ public:
 	void Stop();
 	void SetTankEnabled(bool enable);
 	void Drive(double speed, double curve);
+	void DriveSlide(double speed);
 
 private:
 	// It's desirable that everything possible under private except
