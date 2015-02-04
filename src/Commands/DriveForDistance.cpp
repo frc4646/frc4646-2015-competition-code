@@ -1,6 +1,9 @@
-#include "StraightDriveCommand.h"
+#include "DriveForDistance.h"
+#include "RobotMap.h"
 
-StraightDriveCommand::StraightDriveCommand()
+DriveForDistance::DriveForDistance(double dist, double power):
+encoderDist((dist*DRIVE_MOTOR_SCALE)/6*M_PI),
+motorPower(power)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -8,32 +11,32 @@ StraightDriveCommand::StraightDriveCommand()
 }
 
 // Called just before this Command runs the first time
-void StraightDriveCommand::Initialize()
+void DriveForDistance::Initialize()
 {
-
+	slidedrive->Drive(motorPower,0);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void StraightDriveCommand::Execute()
+void DriveForDistance::Execute()
 {
-	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetLeftStick());
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool StraightDriveCommand::IsFinished()
+bool DriveForDistance::IsFinished()
 {
-	return false;
+	return slidedrive->GetLeftEncoder().Get() < encoderDist;
 }
 
 // Called once after isFinished returns true
-void StraightDriveCommand::End()
+void DriveForDistance::End()
 {
 	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void StraightDriveCommand::Interrupted()
+void DriveForDistance::Interrupted()
 {
 	End();
 }

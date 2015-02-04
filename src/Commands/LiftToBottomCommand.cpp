@@ -1,39 +1,41 @@
-#include "StraightDriveCommand.h"
+#include "LiftToBottomCommand.h"
+#include "RobotMap.h"
 
-StraightDriveCommand::StraightDriveCommand()
+LiftToBottomCommand::LiftToBottomCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(slidedrive);
+	Requires(lift);
 }
 
 // Called just before this Command runs the first time
-void StraightDriveCommand::Initialize()
+void LiftToBottomCommand::Initialize()
 {
-
+	lift->Set(LIFT_LOWER_SPEED);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void StraightDriveCommand::Execute()
+void LiftToBottomCommand::Execute()
 {
-	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetLeftStick());
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool StraightDriveCommand::IsFinished()
+bool LiftToBottomCommand::IsFinished()
 {
-	return false;
+	return lift->GetLimitLower().Get();
 }
 
 // Called once after isFinished returns true
-void StraightDriveCommand::End()
+void LiftToBottomCommand::End()
 {
-	slidedrive->Stop();
+	lift->Set(0);
+	lift->GetEncoder().Reset();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void StraightDriveCommand::Interrupted()
+void LiftToBottomCommand::Interrupted()
 {
 	End();
 }

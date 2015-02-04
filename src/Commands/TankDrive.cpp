@@ -15,7 +15,7 @@ void TankDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute()
 {
-	slidedrive->HandleDrive(oi->GetLeftStick(), oi->GetRightStick());
+	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetRightStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()

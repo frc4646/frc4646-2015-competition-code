@@ -44,4 +44,7 @@ const float LIFT_LEVEL_FIVE = 5;
 const float LIFT_LEVEL_SIX = 6;
 //TODO: set these to correct encoder values.
 
+const float DRIVE_MOTOR_SCALE = 1;
+//TODO: How Can Our Autonomous Be Real If Our Values Aren't Real
+
 #endif

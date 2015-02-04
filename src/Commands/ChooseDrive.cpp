@@ -1,39 +1,38 @@
-#include "StraightDriveCommand.h"
+#include "ChooseDrive.h"
 
-StraightDriveCommand::StraightDriveCommand()
+ChooseDrive::ChooseDrive()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(slidedrive);
 }
 
 // Called just before this Command runs the first time
-void StraightDriveCommand::Initialize()
+void ChooseDrive::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void StraightDriveCommand::Execute()
+void ChooseDrive::Execute()
 {
-	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetLeftStick());
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool StraightDriveCommand::IsFinished()
+bool ChooseDrive::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void StraightDriveCommand::End()
+void ChooseDrive::End()
 {
-	slidedrive->Stop();
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void StraightDriveCommand::Interrupted()
+void ChooseDrive::Interrupted()
 {
-	End();
+
 }

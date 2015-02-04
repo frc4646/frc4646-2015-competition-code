@@ -8,6 +8,9 @@
 #include "Commands/TankAndSlideCommand.h"
 #include "Commands/SlideOnlyCommand.h"
 #include "Commands/StraightDriveCommand.h"
+#include "Commands/LiftToBottomCommand.h"
+#include "Commands/LiftToLevelCommand.h"
+#include "RobotMap.h"
 
 OI::OI():
 	LeftStick(0),
@@ -20,7 +23,14 @@ OI::OI():
  	LiftLower(&MechanismStick,4),
  	SlideOnly(&LeftStick,2),
 	SlideAndTank(&LeftStick,1),
-	StraightDrive(&LeftStick,3)
+	StraightDrive(&LeftStick,3),
+	LiftBottom(&MechanismStick,5),
+	LiftLevelOne(&MechanismStick, 7),
+	LiftLevelTwo(&MechanismStick, 9),
+	LiftLevelThree(&MechanismStick, 11),
+	LiftLevelFour(&MechanismStick, 8),
+	LiftLevelFive(&MechanismStick, 10),
+	LiftLevelSix(&MechanismStick, 12)
 {
 	// Process operator interface input here.
 	GrabberClose.WhileHeld(new GrabberCloseCommand());
@@ -31,6 +41,13 @@ OI::OI():
 	SlideOnly.WhileHeld(new SlideOnlyCommand());
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
 	StraightDrive.WhileHeld(new StraightDriveCommand());
+	LiftBottom.WhenPressed(new LiftToBottomCommand());
+	LiftLevelOne.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_ONE));
+	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));
+	LiftLevelThree.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_THREE));
+	LiftLevelFour.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FOUR));
+	LiftLevelFive.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FIVE));
+	LiftLevelSix.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_SIX));
 }
 
 Joystick& OI::GetLeftStick() {

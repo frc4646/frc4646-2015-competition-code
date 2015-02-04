@@ -8,7 +8,10 @@ SlideDrive::SlideDrive() :
 		RightSpeedController(RIGHT_DRIVE_PORT),
 		SlideSpeedController(SLIDE_DRIVE_PORT),
 		DriveTrain(LeftSpeedController,RightSpeedController),
-		TankEnabled(true)
+		TankEnabled(true),
+		encoderLeft(2),
+		encoderRight(3),
+		encoderSlide(4)
 {
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
@@ -23,7 +26,7 @@ void SlideDrive::InitDefaultCommand()
 	SetDefaultCommand(new TankDrive());
 }
 
-void SlideDrive::HandleDrive(Joystick& left, Joystick& right) {
+void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
 	if (TankEnabled)
 	{
 		DriveTrain.TankDrive(left,right);
@@ -31,6 +34,12 @@ void SlideDrive::HandleDrive(Joystick& left, Joystick& right) {
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
+	SlideSpeedController.Set(left.GetRawAxis(0));
+}
+
+void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
+	LeftSpeedController.Set(left.GetRawAxis(1) + right.GetRawAxis(0));
+	RightSpeedController.Set(-(left.GetRawAxis(1)) - right.GetRawAxis(0));
 	SlideSpeedController.Set(left.GetRawAxis(0));
 }
 
@@ -51,5 +60,17 @@ void SlideDrive::DriveSlide(double speed) {
 	SlideSpeedController.Set(speed);
 }
 
+Counter& SlideDrive::GetLeftEncoder() {
+	return encoderLeft;
+}
+
+Counter& SlideDrive::GetRightEncoder() {
+	return encoderRight;
+}
+
+
+Counter& SlideDrive::GetSlideEncoder() {
+	return encoderSlide;
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

@@ -1,39 +1,41 @@
-#include "StraightDriveCommand.h"
+#include "LiftForTime.h"
 
-StraightDriveCommand::StraightDriveCommand()
+LiftForTime::LiftForTime(double Speed, double time):
+speed(Speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(slidedrive);
+	Requires(lift);
+	SetTimeout(time);
 }
 
 // Called just before this Command runs the first time
-void StraightDriveCommand::Initialize()
+void LiftForTime::Initialize()
 {
-
+	lift->Set(speed);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void StraightDriveCommand::Execute()
+void LiftForTime::Execute()
 {
-	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetLeftStick());
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool StraightDriveCommand::IsFinished()
+bool LiftForTime::IsFinished()
 {
-	return false;
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
-void StraightDriveCommand::End()
+void LiftForTime::End()
 {
-	slidedrive->Stop();
+	lift->Set(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void StraightDriveCommand::Interrupted()
+void LiftForTime::Interrupted()
 {
 	End();
 }

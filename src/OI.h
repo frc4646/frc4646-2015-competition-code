@@ -26,6 +26,14 @@ private:
 	JoystickButton SlideOnly;
 	JoystickButton SlideAndTank;
 	JoystickButton StraightDrive;
+	JoystickButton LiftBottom;
+	JoystickButton LiftLevelOne;
+	JoystickButton LiftLevelTwo;
+	JoystickButton LiftLevelThree;
+	JoystickButton LiftLevelFour;
+	JoystickButton LiftLevelFive;
+	JoystickButton LiftLevelSix;
+
 };
 
 #endif
