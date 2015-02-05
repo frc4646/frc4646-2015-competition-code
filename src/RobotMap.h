@@ -35,9 +35,9 @@ const float LIFT_RAISE_SPEED = 0.5;
 const float LIFT_LOWER_SPEED = -0.1;
 //TODO: consult drive team
 
-const float LIFT_BOTTOM = 0;
-const float LIFT_LEVEL_ONE = 1;
-const float LIFT_LEVEL_TWO = 2;
+const float BOX_HEIGHT = 12.1;
+const float LIFT_LEVEL_ONE = 7;
+const float LIFT_LEVEL_TWO = LIFT_LEVEL_ONE + BOX_HEIGHT;
 const float LIFT_LEVEL_THREE = 3;
 const float LIFT_LEVEL_FOUR = 4;
 const float LIFT_LEVEL_FIVE = 5;

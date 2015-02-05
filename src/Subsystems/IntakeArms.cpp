@@ -15,15 +15,15 @@ void IntakeArms::InitDefaultCommand()
 }
 
 void IntakeArms::Open() {
-	IntakeSolenoid.Set(true);
+	IntakeSolenoid.Set(DoubleSolenoid::kForward);
 }
 
 void IntakeArms::Close() {
-	IntakeSolenoid.Set(false);
+	IntakeSolenoid.Set(DoubleSolenoid::kReverse);
 }
 
 void IntakeArms::Idle() {
-	IntakeSolenoid.Set(false);
+	IntakeSolenoid.Set(DoubleSolenoid::kOff);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

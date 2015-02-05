@@ -2,6 +2,7 @@
 #include "Commands/GrabberCloseCommand.h"
 #include "Commands/GrabberOpenCommand.h"
 #include "Commands/IntakeArmsCloseCommand.h"
+#include "Commands/IntakeArmsOpenCommand.h"
 #include "Commands/LiftLowerCommand.h"
 #include "Commands/LiftRaiseCommand.h"
 #include "Commands/SlideCommand.h"
@@ -19,6 +20,7 @@ OI::OI():
 	GrabberClose(&MechanismStick,1),
 	GrabberOpen(&MechanismStick,2),
  	IntakeClose(&MechanismStick,3),
+ 	IntakeOpen(&MechanismStick,5),
  	LiftRaise(&MechanismStick,6),
  	LiftLower(&MechanismStick,4),
  	SlideOnly(&LeftStick,2),
@@ -36,6 +38,8 @@ OI::OI():
 	GrabberClose.WhileHeld(new GrabberCloseCommand());
 	GrabberOpen.WhileHeld(new GrabberOpenCommand());
 	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
+	IntakeOpen.WhileHeld(new IntakeArmsOpenCommand());
+
 	LiftRaise.WhileHeld(new LiftRaiseCommand());
 	LiftLower.WhileHeld(new LiftLowerCommand());
 	SlideOnly.WhileHeld(new SlideOnlyCommand());

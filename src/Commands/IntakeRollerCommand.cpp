@@ -16,9 +16,8 @@ void IntakeRollerCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void IntakeRollerCommand::Execute()
 {
-	//FIX axis when we have controller
-	intakerollers->SetLeft(oi->GetMechanismStick().GetRawAxis(0));
-	intakerollers->SetRight(oi->GetMechanismStick().GetRawAxis(2));
+	intakerollers->SetLeft(oi->GetMechanismStick().GetRawAxis(1) + oi->GetMechanismStick().GetRawAxis(0));
+	intakerollers->SetRight(-(oi->GetMechanismStick().GetRawAxis(1)) + oi->GetMechanismStick().GetRawAxis(0));
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -1,5 +1,6 @@
 #include "Lift.h"
 #include "../RobotMap.h"
+#include "math.h"
 
 Lift::Lift() :
 		Subsystem("Lift"),
@@ -11,7 +12,7 @@ Lift::Lift() :
 {
 	encoder.Reset();
 	encoder.SetPIDSourceParameter(PIDSource::kRate);
-	encoder.SetDistancePerPulse(1/(71*7.0));
+	encoder.SetDistancePerPulse((2*M_PI)/2048);
 }
 
 void Lift::InitDefaultCommand()
