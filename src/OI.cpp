@@ -20,31 +20,30 @@ OI::OI():
 	GrabberClose(&MechanismStick,1),
 	GrabberOpen(&MechanismStick,2),
  	IntakeClose(&MechanismStick,3),
- 	IntakeOpen(&MechanismStick,5),
  	LiftRaise(&MechanismStick,6),
  	LiftLower(&MechanismStick,4),
  	SlideOnly(&LeftStick,2),
 	SlideAndTank(&LeftStick,1),
 	StraightDrive(&LeftStick,3),
 	LiftBottom(&MechanismStick,5),
-	LiftLevelOne(&MechanismStick, 7),
-	LiftLevelTwo(&MechanismStick, 9),
-	LiftLevelThree(&MechanismStick, 11),
-	LiftLevelFour(&MechanismStick, 8),
-	LiftLevelFive(&MechanismStick, 10),
-	LiftLevelSix(&MechanismStick, 12)
+	LiftLevelOne(&MechanismStick, 11),
+	LiftLevelTwo(&MechanismStick, 12),
+	LiftLevelThree(&MechanismStick, 9),
+	LiftLevelFour(&MechanismStick, 10),
+	LiftLevelFive(&MechanismStick, 7),
+	LiftLevelSix(&MechanismStick, 8)
 {
 	// Process operator interface input here.
-	GrabberClose.WhileHeld(new GrabberCloseCommand());
-	GrabberOpen.WhileHeld(new GrabberOpenCommand());
-	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
-	IntakeOpen.WhileHeld(new IntakeArmsOpenCommand());
 
-	LiftRaise.WhileHeld(new LiftRaiseCommand());
-	LiftLower.WhileHeld(new LiftLowerCommand());
 	SlideOnly.WhileHeld(new SlideOnlyCommand());
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
 	StraightDrive.WhileHeld(new StraightDriveCommand());
+
+	GrabberClose.WhileHeld(new GrabberCloseCommand());
+	GrabberOpen.WhileHeld(new GrabberOpenCommand());
+	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
+	LiftRaise.WhileHeld(new LiftRaiseCommand());
+	LiftLower.WhileHeld(new LiftLowerCommand());
 	LiftBottom.WhenPressed(new LiftToBottomCommand());
 	LiftLevelOne.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_ONE));
 	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));

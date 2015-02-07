@@ -6,13 +6,14 @@ Lift::Lift() :
 		Subsystem("Lift"),
 		LiftSpeedControl(LIFT_DRIVE_PORT),
 		LiftSpeedControl2(LIFT_DRIVE_PORT2),
-		encoder(0, 1),
+		encoder(9, 8),
 		limitlower(0),
 		limitupper(1)
 {
 	encoder.Reset();
 	encoder.SetPIDSourceParameter(PIDSource::kRate);
 	encoder.SetDistancePerPulse((2*M_PI)/2048);
+	encoder.SetReverseDirection(true);
 }
 
 void Lift::InitDefaultCommand()

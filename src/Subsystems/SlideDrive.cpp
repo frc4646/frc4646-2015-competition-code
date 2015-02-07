@@ -2,6 +2,7 @@
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
 #include "../Commands/HolonomicDrive.h"
+#include "math.h"
 
 SlideDrive::SlideDrive() :
 		Subsystem("SlideDrive"),
@@ -10,18 +11,27 @@ SlideDrive::SlideDrive() :
 		SlideSpeedController(SLIDE_DRIVE_PORT),
 		DriveTrain(LeftSpeedController,RightSpeedController),
 		TankEnabled(true),
-		encoderLeft(2),
-		encoderRight(3),
-		encoderSlide(4),
+		encoderLeft(6),
+		encoderRight(5),
+		encoderSlide(7),
 		teleopChoice(new SendableChooser)
 {
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
-	teleopChoice->AddDefault("Tank drive", new TankDrive());
-	teleopChoice->AddObject("Holonomic drive", new HolonomicDrive());
-	SmartDashboard::PutData("Teleop mode", teleopChoice);
+//	DriveTrain.SetSafetyEnabled(false);
+	const double distPerPulse = (6*M_PI)/1000;
+	encoderLeft.SetDistancePerPulse(distPerPulse);
+	encoderRight.SetDistancePerPulse(distPerPulse);
+	encoderSlide.SetDistancePerPulse(distPerPulse);
+
+	SmartDashboard::PutData("LeftEncoder", &encoderLeft);
+	SmartDashboard::PutData("RightEncoder", &encoderRight);
+	SmartDashboard::PutData("SlideEncoder", &encoderSlide);
+//	teleopChoice->AddDefault("Tank drive", new TankDrive());
+//	teleopChoice->AddObject("Holonomic drive", new HolonomicDrive());
+//	SmartDashboard::PutData("Teleop mode", teleopChoice);
 }
 
 SlideDrive::~SlideDrive() {
@@ -31,10 +41,13 @@ SlideDrive::~SlideDrive() {
 void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand((Command*)teleopChoice->GetSelected());
+	SetDefaultCommand(new TankDrive());
 }
 
 void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
+	SmartDashboard::PutData("LeftEncoder", &encoderLeft);
+	SmartDashboard::PutData("RightEncoder", &encoderRight);
+	SmartDashboard::PutData("SlideEncoder", &encoderSlide);
 	if (TankEnabled)
 	{
 		DriveTrain.TankDrive(left,right);
@@ -47,8 +60,8 @@ void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
 
 void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
 	LeftSpeedController.Set(left.GetRawAxis(1) + right.GetRawAxis(0));
-	RightSpeedController.Set(-(left.GetRawAxis(1)) - right.GetRawAxis(0));
-	SlideSpeedController.Set(left.GetRawAxis(0));
+	RightSpeedController.Set(-(left.GetRawAxis(1)) + right.GetRawAxis(0));
+	SlideSpeedController.Set(-left.GetRawAxis(0));
 }
 
 void SlideDrive::Stop() {

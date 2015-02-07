@@ -31,7 +31,9 @@ void LiftToLevelCommand::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool LiftToLevelCommand::IsFinished()
 {
-	return fabs((lift->GetEncoder().GetDistance()) < (liftlevel + 0.01)) && fabs((lift->GetEncoder().GetDistance()) > (liftlevel - 0.01));
+	double error = fabs(lift->GetEncoder().GetDistance() - liftlevel);
+
+	return error < 0.1;
 }
 
 // Called once after isFinished returns true

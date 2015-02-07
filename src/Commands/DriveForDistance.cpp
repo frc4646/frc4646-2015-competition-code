@@ -2,7 +2,7 @@
 #include "RobotMap.h"
 
 DriveForDistance::DriveForDistance(double dist, double power):
-encoderDist((dist*DRIVE_MOTOR_SCALE)/6*M_PI),
+encoderDist(dist),
 motorPower(power)
 {
 	// Use Requires() here to declare subsystem dependencies

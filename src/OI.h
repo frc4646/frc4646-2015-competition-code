@@ -21,7 +21,6 @@ private:
 	JoystickButton GrabberClose;
 	JoystickButton GrabberOpen;
 	JoystickButton IntakeClose;
-	JoystickButton IntakeOpen;
 	JoystickButton LiftRaise;
 	JoystickButton LiftLower;
 	JoystickButton SlideOnly;
