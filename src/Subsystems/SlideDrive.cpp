@@ -21,17 +21,17 @@ SlideDrive::SlideDrive() :
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 //	DriveTrain.SetSafetyEnabled(false);
-	const double distPerPulse = (6*M_PI)/1000;
+	const double distPerPulse = (6*M_PI)/250;
 	encoderLeft.SetDistancePerPulse(distPerPulse);
 	encoderRight.SetDistancePerPulse(distPerPulse);
 	encoderSlide.SetDistancePerPulse(distPerPulse);
+	encoderLeft.Reset();
+	encoderRight.Reset();
+	encoderSlide.Reset();
 
 	SmartDashboard::PutData("LeftEncoder", &encoderLeft);
 	SmartDashboard::PutData("RightEncoder", &encoderRight);
 	SmartDashboard::PutData("SlideEncoder", &encoderSlide);
-//	teleopChoice->AddDefault("Tank drive", new TankDrive());
-//	teleopChoice->AddObject("Holonomic drive", new HolonomicDrive());
-//	SmartDashboard::PutData("Teleop mode", teleopChoice);
 }
 
 SlideDrive::~SlideDrive() {

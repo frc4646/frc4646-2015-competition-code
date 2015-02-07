@@ -12,6 +12,13 @@ liftlevel(level)
 // Called just before this Command runs the first time
 void LiftToLevelCommand::Initialize()
 {
+
+}
+
+// Called repeatedly when this Command is scheduled to run
+void LiftToLevelCommand::Execute()
+{
+	SmartDashboard::PutData("EncoderValue", &lift->GetEncoder());
 	if (fabs(lift->GetEncoder().GetDistance()) < liftlevel)
 	{
 		lift->Set(LIFT_RAISE_SPEED);
@@ -20,12 +27,6 @@ void LiftToLevelCommand::Initialize()
 	{
 		lift->Set(LIFT_LOWER_SPEED);
 	}
-}
-
-// Called repeatedly when this Command is scheduled to run
-void LiftToLevelCommand::Execute()
-{
-
 }
 
 // Make this return true when this Command no longer needs to run execute()

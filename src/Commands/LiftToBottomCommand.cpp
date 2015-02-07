@@ -23,7 +23,7 @@ void LiftToBottomCommand::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool LiftToBottomCommand::IsFinished()
 {
-	return lift->GetLimitLower().Get();
+	return !lift->GetLimitLower().Get();
 }
 
 // Called once after isFinished returns true

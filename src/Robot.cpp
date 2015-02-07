@@ -5,6 +5,8 @@
 #include "Commands/AutoCommand.h"
 #include "Commands/AutoGrabToteCommand.h"
 #include "Commands/AutoStackTotes.h"
+#include "Commands/DriveForDistance.h"
+#include "Commands/SlideForDistance.h"
 
 class Robot: public IterativeRobot
 {
@@ -21,6 +23,8 @@ private:
 		chooser->AddDefault("Move Forward", new AutoCommand());
 		chooser->AddObject("Move forward and grab tote", new AutoGrabToteCommand());
 		chooser->AddObject("Stack totes", new AutoStackTotes());
+		chooser->AddObject("Drive for one rotation", new DriveForDistance(6*M_PI, 0.1));
+		chooser->AddObject("Slide for one rotation", new SlideForDistance(18*M_PI, 0.1));
 		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();
 	}

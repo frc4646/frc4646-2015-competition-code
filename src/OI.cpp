@@ -66,5 +66,5 @@ Joystick& OI::GetMechanismStick() {
 }
 
 double OI::GetLiftSpeed() {
-	return (MechanismStick.GetRawAxis(3)*-0.5) + 0.5;
+	return (MechanismStick.GetRawAxis(3)*-0.4) + 0.6;
 }

@@ -13,19 +13,19 @@ motorPower(power)
 // Called just before this Command runs the first time
 void DriveForDistance::Initialize()
 {
-	slidedrive->Drive(motorPower,0);
+	slidedrive->GetRightEncoder().Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForDistance::Execute()
 {
-
+	slidedrive->Drive(motorPower,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForDistance::IsFinished()
 {
-	return slidedrive->GetLeftEncoder().Get() < encoderDist;
+	return slidedrive->GetRightEncoder().GetDistance() > encoderDist;
 }
 
 // Called once after isFinished returns true
