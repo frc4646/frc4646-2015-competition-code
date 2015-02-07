@@ -28,13 +28,15 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
 
-	oi = new OI();
 	grabber = new Grabber();
 	intakearms = new IntakeArms();
 	intakerollers = new IntakeRollers();
 	lift = new Lift();
 	slidedrive = new SlideDrive();
 	distancesensor = new DistanceSensor();
+
+	oi = new OI();
+
 	SmartDashboard::PutData(grabber);
 	SmartDashboard::PutData(intakerollers);
 	SmartDashboard::PutData(intakearms);

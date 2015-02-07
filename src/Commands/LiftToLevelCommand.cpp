@@ -21,11 +21,11 @@ void LiftToLevelCommand::Execute()
 	SmartDashboard::PutData("EncoderValue", &lift->GetEncoder());
 	if (fabs(lift->GetEncoder().GetDistance()) < liftlevel)
 	{
-		lift->Set(LIFT_RAISE_SPEED);
+		lift->Set(oi->GetLiftSpeed());
 	}
 	else
 	{
-		lift->Set(LIFT_LOWER_SPEED);
+		lift->Set(oi->GetLiftSpeed() * LIFT_LOWER_SPEED);
 	}
 }
 

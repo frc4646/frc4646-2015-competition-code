@@ -31,8 +31,8 @@ const int GRABBER_OPEN_PORT = 0;
 const int GRABBER_CLOSE_PORT = 1;
 const int INTAKE_ARMS_PORT = 2; // oh yeah make these real too
 
-const float LIFT_RAISE_SPEED = 0.5;
-const float LIFT_LOWER_SPEED = -0.1;
+
+const float LIFT_LOWER_SPEED = -0.5;
 //TODO: consult drive team
 
 const float BOX_HEIGHT = 12.1;

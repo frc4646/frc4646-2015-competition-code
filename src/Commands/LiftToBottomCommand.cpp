@@ -11,7 +11,7 @@ LiftToBottomCommand::LiftToBottomCommand()
 // Called just before this Command runs the first time
 void LiftToBottomCommand::Initialize()
 {
-	lift->Set(LIFT_LOWER_SPEED);
+	lift->Set(oi->GetLiftSpeed() * LIFT_LOWER_SPEED);
 }
 
 // Called repeatedly when this Command is scheduled to run
