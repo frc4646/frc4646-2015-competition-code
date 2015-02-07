@@ -1,6 +1,7 @@
 #include "SlideDrive.h"
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
+#include "../Commands/HolonomicDrive.h"
 
 SlideDrive::SlideDrive() :
 		Subsystem("SlideDrive"),
@@ -11,19 +12,26 @@ SlideDrive::SlideDrive() :
 		TankEnabled(true),
 		encoderLeft(2),
 		encoderRight(3),
-		encoderSlide(4)
+		encoderSlide(4),
+		teleopChoice(new SendableChooser)
 {
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+	teleopChoice->AddDefault("Tank drive", new TankDrive());
+	teleopChoice->AddObject("Holonomic drive", new HolonomicDrive());
+	SmartDashboard::PutData("Teleop mode", teleopChoice);
+}
 
+SlideDrive::~SlideDrive() {
+	delete teleopChoice;
 }
 
 void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new TankDrive());
+	SetDefaultCommand((Command*)teleopChoice->GetSelected());
 }
 
 void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
@@ -60,16 +68,16 @@ void SlideDrive::DriveSlide(double speed) {
 	SlideSpeedController.Set(speed);
 }
 
-Counter& SlideDrive::GetLeftEncoder() {
+SingleEncoder& SlideDrive::GetLeftEncoder() {
 	return encoderLeft;
 }
 
-Counter& SlideDrive::GetRightEncoder() {
+SingleEncoder& SlideDrive::GetRightEncoder() {
 	return encoderRight;
 }
 
 
-Counter& SlideDrive::GetSlideEncoder() {
+SingleEncoder& SlideDrive::GetSlideEncoder() {
 	return encoderSlide;
 }
 // Put methods for controlling this subsystem

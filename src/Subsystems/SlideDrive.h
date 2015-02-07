@@ -4,11 +4,13 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "../CounterPIDSource.h"
+#include "SingleEncoder.h"
 
 class SlideDrive: public Subsystem
 {
 public:
 	SlideDrive();
+	~SlideDrive();
 	void InitDefaultCommand();
 
 	void HandleTankDrive(Joystick& left, Joystick& right);
@@ -19,9 +21,9 @@ public:
 	void Drive(double speed, double curve);
 	void DriveSlide(double speed);
 
-	Counter& GetLeftEncoder();
-	Counter& GetRightEncoder();
-	Counter& GetSlideEncoder();
+	SingleEncoder& GetLeftEncoder();
+	SingleEncoder& GetRightEncoder();
+	SingleEncoder& GetSlideEncoder();
 
 private:
 	// It's desirable that everything possible under private except
@@ -31,9 +33,10 @@ private:
 	Talon SlideSpeedController;
 	RobotDrive DriveTrain;
 	bool TankEnabled;
-	Counter encoderLeft;
-	Counter encoderRight;
-	Counter encoderSlide;
+	SingleEncoder encoderLeft;
+	SingleEncoder encoderRight;
+	SingleEncoder encoderSlide;
+	SendableChooser *teleopChoice;
 
 };
 

@@ -38,10 +38,10 @@ const float LIFT_LOWER_SPEED = -0.1;
 const float BOX_HEIGHT = 12.1;
 const float LIFT_LEVEL_ONE = 7;
 const float LIFT_LEVEL_TWO = LIFT_LEVEL_ONE + BOX_HEIGHT;
-const float LIFT_LEVEL_THREE = 3;
-const float LIFT_LEVEL_FOUR = 4;
-const float LIFT_LEVEL_FIVE = 5;
-const float LIFT_LEVEL_SIX = 6;
+const float LIFT_LEVEL_THREE = LIFT_LEVEL_TWO + BOX_HEIGHT;
+const float LIFT_LEVEL_FOUR = LIFT_LEVEL_THREE + BOX_HEIGHT;
+const float LIFT_LEVEL_FIVE = LIFT_LEVEL_FOUR + BOX_HEIGHT;
+const float LIFT_LEVEL_SIX = LIFT_LEVEL_FIVE + BOX_HEIGHT;
 //TODO: set these to correct encoder values.
 
 const float DRIVE_MOTOR_SCALE = 1;
