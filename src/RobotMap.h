@@ -19,8 +19,8 @@ const int RIGHT_DRIVE_PORT = 8;
 const int SLIDE_DRIVE_PORT = 7;
 const int LIFT_DRIVE_PORT = 6;
 const int LIFT_DRIVE_PORT2 = 5;
-const int LEFT_INTAKE_PORT = 1;
-const int RIGHT_INTAKE_PORT = 2;
+const int LEFT_INTAKE_PORT = 4;
+const int RIGHT_INTAKE_PORT = 3;
 //TODO: Make the intake ports the real ones
 
 // If you are using multiple modules, make sure to define both the port

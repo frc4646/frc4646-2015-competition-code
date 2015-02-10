@@ -42,8 +42,9 @@ void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 //	SetDefaultCommand(new TankDrive());
-	SetDefaultCommand(new HolonomicDrive());
-	DriveTrain.SetSafetyEnabled(false);
+	SetDefaultCommand(new HolonomicDrive());	//This line and the line below it should be commented out for tank drive
+	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented.
+	//TODO: Non-sketchy way to switch these.
 }
 
 void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
@@ -61,9 +62,15 @@ void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
 }
 
 void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
-	LeftSpeedController.Set(-left.GetRawAxis(1) + right.GetRawAxis(0));
-	RightSpeedController.Set(-(-left.GetRawAxis(1)) + right.GetRawAxis(0));
-	SlideSpeedController.Set(left.GetRawAxis(0));
+	double leftSpeed	=(-left.GetRawAxis(1) + right.GetRawAxis(0))*abs(-left.GetRawAxis(1) + right.GetRawAxis(0));
+	double rightSpeed	=(-(-left.GetRawAxis(1)) + right.GetRawAxis(0))*abs(-(-left.GetRawAxis(1)) + right.GetRawAxis(0));
+	double slideSpeed	=(left.GetRawAxis(0))*abs(left.GetRawAxis(0));
+//	LeftSpeedController.Set(-left.GetRawAxis(1) + right.GetRawAxis(0));
+//	RightSpeedController.Set(-(-left.GetRawAxis(1)) + right.GetRawAxis(0));
+//	SlideSpeedController.Set(left.GetRawAxis(0));
+	LeftSpeedController.Set(leftSpeed);
+	RightSpeedController.Set(rightSpeed);
+	SlideSpeedController.Set(slideSpeed);
 }
 
 void SlideDrive::Stop() {
