@@ -6,7 +6,6 @@ AutoCommand::AutoCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	AddSequential(new DriveUntilClose(), 10);
 }
 
 // Called just before this Command runs the first time

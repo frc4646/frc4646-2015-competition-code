@@ -41,7 +41,7 @@ private:
 
 	void AutonomousInit()
 	{
-		autonomousCommand = (Command*) chooser->GetSelected();
+		autonomousCommand = new AutoCommand();
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}

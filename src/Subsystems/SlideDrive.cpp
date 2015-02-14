@@ -42,8 +42,8 @@ void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 //	SetDefaultCommand(new TankDrive());
-	SetDefaultCommand(new HolonomicDrive());	//This line and the line below it should be commented out for tank drive
-	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented.
+	SetDefaultCommand(new TankDrive());	//This line and the line below it should be commented out for tank drive
+	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented too.
 	//TODO: Non-sketchy way to switch these.
 }
 

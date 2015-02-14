@@ -21,7 +21,6 @@ const int LIFT_DRIVE_PORT = 6;
 const int LIFT_DRIVE_PORT2 = 5;
 const int LEFT_INTAKE_PORT = 4;
 const int RIGHT_INTAKE_PORT = 3;
-//TODO: Make the intake ports the real ones
 
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
@@ -42,7 +41,7 @@ const float LIFT_LEVEL_THREE = LIFT_LEVEL_TWO + BOX_HEIGHT;
 const float LIFT_LEVEL_FOUR = LIFT_LEVEL_THREE + BOX_HEIGHT;
 const float LIFT_LEVEL_FIVE = LIFT_LEVEL_FOUR + BOX_HEIGHT;
 const float LIFT_LEVEL_SIX = LIFT_LEVEL_FIVE + BOX_HEIGHT;
-//TODO: set these to correct encoder values.
+//TODO: set these to correct values.
 
 const float DRIVE_MOTOR_SCALE = 1;
 //TODO: How Can Our Autonomous Be Real If Our Values Aren't Real
