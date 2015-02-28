@@ -26,9 +26,9 @@ const int RIGHT_INTAKE_PORT = 3;
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;
 //const int RANGE_FINDER_MODULE = 1;
-const int GRABBER_OPEN_PORT = 0;
-const int GRABBER_CLOSE_PORT = 1;
-const int INTAKE_ARMS_PORT = 2; // oh yeah make these real too
+const int GRABBER_OPEN_PORT = 1;
+const int GRABBER_CLOSE_PORT = 2;
+const int INTAKE_ARMS_PORT = 0; // oh yeah make these real too
 
 
 const float LIFT_LOWER_SPEED = -0.5;
@@ -41,9 +41,7 @@ const float LIFT_LEVEL_THREE = LIFT_LEVEL_TWO + BOX_HEIGHT;
 const float LIFT_LEVEL_FOUR = LIFT_LEVEL_THREE + BOX_HEIGHT;
 const float LIFT_LEVEL_FIVE = LIFT_LEVEL_FOUR + BOX_HEIGHT;
 const float LIFT_LEVEL_SIX = LIFT_LEVEL_FIVE + BOX_HEIGHT;
-//TODO: set these to correct values.
 
 const float DRIVE_MOTOR_SCALE = 1;
-//TODO: How Can Our Autonomous Be Real If Our Values Aren't Real
 
 #endif

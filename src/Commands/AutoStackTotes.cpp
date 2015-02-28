@@ -2,6 +2,8 @@
 #include "GrabAndLift.h"
 #include "DriveUntilClose.h"
 #include "StackAndLower.h"
+#include "DriveForDistance.h"
+#include "SlideForDistance.h"
 
 AutoStackTotes::AutoStackTotes()
 {
@@ -21,8 +23,10 @@ AutoStackTotes::AutoStackTotes()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GrabAndLift());
-	AddSequential(new DriveUntilClose(), 7);
-	AddSequential(new StackAndLower());
-	AddSequential(new GrabAndLift());
+//	AddSequential(new GrabAndLift());
+//	AddSequential(new DriveUntilClose(), 7);
+//	AddSequential(new StackAndLower());
+//	AddSequential(new GrabAndLift());
+	AddSequential(new DriveForDistance(18*M_PI, 0.2));
+	AddSequential(new SlideForDistance(18*M_PI, 0.2));
 }

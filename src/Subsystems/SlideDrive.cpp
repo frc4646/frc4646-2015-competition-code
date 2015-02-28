@@ -2,7 +2,6 @@
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
 #include "../Commands/HolonomicDrive.h"
-#include "math.h"
 
 SlideDrive::SlideDrive() :
 		Subsystem("SlideDrive"),
@@ -21,7 +20,7 @@ SlideDrive::SlideDrive() :
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	DriveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 //	DriveTrain.SetSafetyEnabled(false);
-	const double distPerPulse = (6*M_PI)/250;
+	const double distPerPulse = (6*M_PI/360);
 	encoderLeft.SetDistancePerPulse(distPerPulse);
 	encoderRight.SetDistancePerPulse(distPerPulse);
 	encoderSlide.SetDistancePerPulse(distPerPulse);
@@ -41,9 +40,9 @@ SlideDrive::~SlideDrive() {
 void SlideDrive::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-//	SetDefaultCommand(new TankDrive());
-	SetDefaultCommand(new TankDrive());	//This line and the line below it should be commented out for tank drive
-	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented too.
+	SetDefaultCommand(new TankDrive());
+//	SetDefaultCommand(new HolonomicDrive());	//This line and the line below it should be commented out for tank drive
+//	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented too.
 	//TODO: Non-sketchy way to switch these.
 }
 
@@ -58,7 +57,7 @@ void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
-	SlideSpeedController.Set(left.GetRawAxis(0));
+	SlideSpeedController.Set(-left.GetRawAxis(0));
 }
 
 void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
@@ -70,7 +69,7 @@ void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
 //	SlideSpeedController.Set(left.GetRawAxis(0));
 	LeftSpeedController.Set(leftSpeed);
 	RightSpeedController.Set(rightSpeed);
-	SlideSpeedController.Set(slideSpeed);
+	SlideSpeedController.Set(-slideSpeed);
 }
 
 void SlideDrive::Stop() {

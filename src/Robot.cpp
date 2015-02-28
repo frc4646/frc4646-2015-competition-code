@@ -26,7 +26,7 @@ private:
 		chooser->AddObject("Stack totes", new AutoStackTotes());
 		chooser->AddObject("Drive for one rotation", new DriveForDistance(6*M_PI, 0.1));
 		chooser->AddObject("Slide for one rotation", new SlideForDistance(18*M_PI, 0.1));
-		chooser->AddObject("Drive in a square", new SquareDrive(6*M_PI, .25));
+		chooser->AddObject("Drive in a square", new SquareDrive(6, .25));
 		SmartDashboard::PutData("Auto"
 				""
 				""
@@ -41,7 +41,7 @@ private:
 
 	void AutonomousInit()
 	{
-		autonomousCommand = new AutoCommand();
+		autonomousCommand = new AutoStackTotes();
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}

@@ -9,7 +9,7 @@
 #include "Subsystems/Grabber.h"
 #include "Subsystems/IntakeArms.h"
 #include "Subsystems/IntakeRollers.h"
-#include "Subsystems/Lift.h"
+#include "Subsystems/PIDLift.h"
 #include "Subsystems/SlideDrive.h"
 #include "Subsystems/DistanceSensor.h"
 
@@ -30,7 +30,7 @@ public:
 	static Grabber* grabber;
 	static IntakeArms* intakearms;
 	static IntakeRollers* intakerollers;
-	static Lift* lift;
+	static PIDLift* lift;
 	static SlideDrive* slidedrive;
 	static DistanceSensor* distancesensor;
 };
