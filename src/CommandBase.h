@@ -9,9 +9,10 @@
 #include "Subsystems/Grabber.h"
 #include "Subsystems/IntakeArms.h"
 #include "Subsystems/IntakeRollers.h"
-#include "Subsystems/PIDLift.h"
+#include "Subsystems/Lift.h"
 #include "Subsystems/SlideDrive.h"
 #include "Subsystems/DistanceSensor.h"
+#include "Subsystems/LEDSystem.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -30,9 +31,10 @@ public:
 	static Grabber* grabber;
 	static IntakeArms* intakearms;
 	static IntakeRollers* intakerollers;
-	static PIDLift* lift;
+	static Lift* lift;
 	static SlideDrive* slidedrive;
 	static DistanceSensor* distancesensor;
+	static LEDSystem* ledsystem;
 };
 
 #endif

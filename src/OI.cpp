@@ -19,19 +19,19 @@ OI::OI():
 	MechanismStick(2),
 	GrabberClose(&MechanismStick,1),
 	GrabberOpen(&MechanismStick,2),
- 	IntakeClose(&MechanismStick,3),
+ 	IntakeClose(&MechanismStick,11),
  	LiftRaise(&MechanismStick,6),
  	LiftLower(&MechanismStick,4),
  	SlideOnly(&LeftStick,2),
 	SlideAndTank(&LeftStick,1),
 	StraightDrive(&LeftStick,3),
 	LiftBottom(&MechanismStick,5),
-	LiftLevelOne(&MechanismStick, 11),
-	LiftLevelTwo(&MechanismStick, 12),
-	LiftLevelThree(&MechanismStick, 9),
-	LiftLevelFour(&MechanismStick, 10),
-	LiftLevelFive(&MechanismStick, 7),
-	LiftLevelSix(&MechanismStick, 8)
+	LiftLevelOne(&MechanismStick, 9),
+	LiftLevelTwo(&MechanismStick, 10),
+	LiftLevelThree(&MechanismStick, 7),
+	LiftLevelFour(&MechanismStick, 8)
+//	LiftLevelFive(&MechanismStick, 7),
+//	LiftLevelSix(&MechanismStick, 8)
 {
 	// Process operator interface input here.
 
@@ -49,8 +49,8 @@ OI::OI():
 	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));
 	LiftLevelThree.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_THREE));
 	LiftLevelFour.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FOUR));
-	LiftLevelFive.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FIVE));
-	LiftLevelSix.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_SIX));
+//	LiftLevelFive.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FIVE));
+//	LiftLevelSix.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_SIX));
 }
 
 Joystick& OI::GetLeftStick() {

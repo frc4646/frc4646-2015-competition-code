@@ -1,7 +1,7 @@
 #include "LEDSystem.h"
 #include "../RobotMap.h"
 #include "string"
-
+#include "Commands/SetLedHeight.h"
 
 LEDSystem::LEDSystem() :
 		Subsystem("LEDSystem"),
@@ -15,13 +15,13 @@ LEDSystem::LEDSystem() :
 
 void LEDSystem::InitDefaultCommand()
 {
-
+	SetDefaultCommand(new SetLedHeight());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
 void LEDSystem::sendLEDHeight(int centerLEDHeight) {
-	std::string strHeight = "h" + std::to_string(centerLEDHeight) + "\n";
+	std::string strHeight = std::to_string(centerLEDHeight) + "\n";
 	serialPort.Write(strHeight.c_str(), (int)strHeight.length());
 }
 // Put methods for controlling this subsystem

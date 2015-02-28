@@ -21,6 +21,7 @@ const int LIFT_DRIVE_PORT = 6;
 const int LIFT_DRIVE_PORT2 = 5;
 const int LEFT_INTAKE_PORT = 4;
 const int RIGHT_INTAKE_PORT = 3;
+const float INCH_PER_LED = 0.66;
 
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:

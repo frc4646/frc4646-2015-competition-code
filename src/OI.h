@@ -31,8 +31,8 @@ private:
 	JoystickButton LiftLevelTwo;
 	JoystickButton LiftLevelThree;
 	JoystickButton LiftLevelFour;
-	JoystickButton LiftLevelFive;
-	JoystickButton LiftLevelSix;
+//	JoystickButton LiftLevelFive;
+//	JoystickButton LiftLevelSix;
 
 };
 
