@@ -1,13 +1,13 @@
-#ifndef DriveUntilClose_H
-#define DriveUntilClose_H
+#ifndef IntakeUntilClose_H
+#define IntakeUntilClose_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class DriveUntilClose: public CommandBase
+class IntakeUntilClose: public CommandBase
 {
 public:
-	DriveUntilClose(double finalObjectDistance = 30);
+	IntakeUntilClose(double finalObjectDistance = 30);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -17,4 +17,5 @@ public:
 private:
 	double m_finalObjectDistance;
 };
+
 #endif

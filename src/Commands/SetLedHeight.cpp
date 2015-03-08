@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 
 SetLedHeight::SetLedHeight()
+:CommandBase("SetLedHeight")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

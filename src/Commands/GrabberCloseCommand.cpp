@@ -1,6 +1,7 @@
 #include "GrabberCloseCommand.h"
 
 GrabberCloseCommand::GrabberCloseCommand()
+:CommandBase("GrabberCloseCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

@@ -8,6 +8,8 @@
 #include "Commands/DriveForDistance.h"
 #include "Commands/SlideForDistance.h"
 #include "Commands/SquareDrive.h"
+#include "Commands/TurnForRevolutions.h"
+#include "Commands/GrabThenReverse.h"
 
 class Robot: public IterativeRobot
 {
@@ -15,23 +17,23 @@ private:
 	Command *autonomousCommand;
 	LiveWindow *lw;
 	SendableChooser *chooser;
+	Compressor* comp;
 
 	void RobotInit()
 	{
 		CommandBase::init();
 //		autonomousCommand = new SquareDrive();
 		chooser = new SendableChooser();
-		chooser->AddDefault("Move Forward", new AutoCommand());
-		chooser->AddObject("Move forward and grab tote", new AutoGrabToteCommand());
-		chooser->AddObject("Stack totes", new AutoStackTotes());
-		chooser->AddObject("Drive for one rotation", new DriveForDistance(6*M_PI, 0.1));
-		chooser->AddObject("Slide for one rotation", new SlideForDistance(18*M_PI, 0.1));
-		chooser->AddObject("Drive in a square", new SquareDrive(6, .25));
-		SmartDashboard::PutData("Auto"
-				""
-				""
-				"+nomous mode", chooser);
+		chooser->AddDefault("Auto Zone Forward", new DriveForDistance(60, 0.3));
+		chooser->AddObject("Auto Zone Backwards", new DriveForDistance(60, -0.3));
+		chooser->AddObject("Auto Zone Slide Right", new SlideForDistance(40, 0.5));
+		chooser->AddObject("Auto Zone Slide Left", new SlideForDistance(40,-0.5));
+		chooser->AddObject("Rotate one revolution CW", new TurnForRevolutions(1, 0.5));
+		chooser->AddObject("Rotate one revolution CCW", new TurnForRevolutions(1,-0.5));
+		chooser->AddObject("Grab And Reverse", new GrabThenReverse());
+		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();
+		comp = new Compressor();
 	}
 	
 	void DisabledPeriodic()
@@ -41,7 +43,8 @@ private:
 
 	void AutonomousInit()
 	{
-		autonomousCommand = new AutoStackTotes();
+		comp->Start();
+		autonomousCommand = (Command*) chooser->GetSelected();
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}
@@ -53,6 +56,7 @@ private:
 
 	void TeleopInit()
 	{
+		comp->Start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove

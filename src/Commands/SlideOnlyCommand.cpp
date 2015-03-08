@@ -1,6 +1,7 @@
 #include "SlideOnlyCommand.h"
 
 SlideOnlyCommand::SlideOnlyCommand()
+: CommandBase("SlideOnlyCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -17,6 +18,7 @@ void SlideOnlyCommand::Initialize()
 void SlideOnlyCommand::Execute()
 {
 	slidedrive->HandleSlide(oi->GetLeftStick(), oi->GetRightStick());
+	slidedrive->TankIdle();
 }
 
 // Make this return true when this Command no longer needs to run execute()

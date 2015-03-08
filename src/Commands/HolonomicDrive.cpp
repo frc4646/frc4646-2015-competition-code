@@ -1,6 +1,7 @@
 #include "HolonomicDrive.h"
 
 HolonomicDrive::HolonomicDrive()
+:CommandBase("HolonomicDrive")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

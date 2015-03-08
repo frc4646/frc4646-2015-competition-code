@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 
 LiftToLevelCommand::LiftToLevelCommand(double level):
+CommandBase("LiftToLevelCommand"),
 liftlevel(level)
 {
 	// Use Requires() here to declare subsystem dependencies

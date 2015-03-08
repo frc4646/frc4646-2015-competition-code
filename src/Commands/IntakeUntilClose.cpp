@@ -1,47 +1,49 @@
-#include "DriveUntilClose.h"
+#include "IntakeUntilClose.h"
 
-DriveUntilClose::DriveUntilClose(double finalObjectDistance)
-: CommandBase("DriveUntilClose"),
+IntakeUntilClose::IntakeUntilClose(double finalObjectDistance)
+: CommandBase("IntakeUntilClose"),
   m_finalObjectDistance(finalObjectDistance)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(CommandBase::slidedrive);
+	Requires(CommandBase::intakerollers);
 	Requires(CommandBase::distancesensor);
 }
 
 // Called just before this Command runs the first time
-void DriveUntilClose::Initialize()
+void IntakeUntilClose::Initialize()
 {
-	slidedrive->Drive(.5,0);
+	intakerollers->SetLeft(0);
+	intakerollers->SetRight(0);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveUntilClose::Execute()
+void IntakeUntilClose::Execute()
 {
-	slidedrive->Drive(.5,0);
+	intakerollers->SetLeft(1);
+	intakerollers->SetRight(-1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveUntilClose::IsFinished()
+bool IntakeUntilClose::IsFinished()
 {
 	return IsClose();
 }
 
 // Called once after isFinished returns true
-void DriveUntilClose::End()
+void IntakeUntilClose::End()
 {
-	slidedrive->Stop();
+	intakerollers->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveUntilClose::Interrupted()
+void IntakeUntilClose::Interrupted()
 {
 	End();
 }
 
-bool DriveUntilClose::IsClose()
+bool IntakeUntilClose::IsClose()
 {
 	return distancesensor->GetDistance() < m_finalObjectDistance;
 }

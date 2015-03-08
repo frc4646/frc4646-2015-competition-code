@@ -1,6 +1,7 @@
 #include "SlideCommand.h"
 
 SlideCommand::SlideCommand()
+:CommandBase("SlideCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

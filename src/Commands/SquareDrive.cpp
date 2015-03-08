@@ -2,6 +2,7 @@
 #include "Commands/DriveForDistance.h"
 #include "Commands/SlideForDistance.h"
 SquareDrive::SquareDrive(double dist, double power)
+:CommandGroup("SquareDrive")
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

@@ -16,6 +16,7 @@ public:
 	void HandleTankDrive(Joystick& left, Joystick& right);
 	void HandleSlide(Joystick& left, Joystick& right);
 	void HandleHolonomicDrive(Joystick& left, Joystick& right);
+	void TankIdle();
 	void Stop();
 	void SetTankEnabled(bool enable);
 	void Drive(double speed, double curve);

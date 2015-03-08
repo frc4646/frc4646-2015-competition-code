@@ -1,6 +1,7 @@
 #include "TankAndSlideCommand.h"
 
 TankAndSlideCommand::TankAndSlideCommand()
+:CommandBase("TankAndSlideCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

@@ -18,7 +18,7 @@ OI::OI():
 	RightStick(1),
 	MechanismStick(2),
 	GrabberClose(&MechanismStick,1),
-	GrabberOpen(&MechanismStick,2),
+	GrabberOpen(&MechanismStick,3),
  	IntakeClose(&MechanismStick,11),
  	LiftRaise(&MechanismStick,6),
  	LiftLower(&MechanismStick,4),

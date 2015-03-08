@@ -1,6 +1,7 @@
 #include "StraightDriveCommand.h"
 
 StraightDriveCommand::StraightDriveCommand()
+:CommandBase("StraightDriveCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

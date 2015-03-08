@@ -29,11 +29,10 @@ const float INCH_PER_LED = 0.66;
 //const int RANGE_FINDER_MODULE = 1;
 const int GRABBER_OPEN_PORT = 1;
 const int GRABBER_CLOSE_PORT = 2;
-const int INTAKE_ARMS_PORT = 0; // oh yeah make these real too
+const int INTAKE_ARMS_PORT = 0;
 
 
 const float LIFT_LOWER_SPEED = -0.5;
-//TODO: consult drive team
 
 const float BOX_HEIGHT = 12.1;
 const float LIFT_LEVEL_ONE = 7;

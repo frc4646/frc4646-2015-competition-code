@@ -1,6 +1,7 @@
 #include "LiftIdle.h"
 
 LiftIdle::LiftIdle()
+:CommandBase("LiftIdle")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

@@ -42,7 +42,7 @@ void SlideDrive::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	SetDefaultCommand(new TankDrive());
 //	SetDefaultCommand(new HolonomicDrive());	//This line and the line below it should be commented out for tank drive
-//	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented too.
+	DriveTrain.SetSafetyEnabled(false); 		//The line above these should be uncommented too.
 	//TODO: Non-sketchy way to switch these.
 }
 
@@ -57,7 +57,7 @@ void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
-	SlideSpeedController.Set(-left.GetRawAxis(0));
+	SlideSpeedController.Set(left.GetRawAxis(0));
 }
 
 void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
@@ -97,6 +97,9 @@ SingleEncoder& SlideDrive::GetRightEncoder() {
 	return encoderRight;
 }
 
+void SlideDrive::TankIdle() {
+	DriveTrain.Drive(0,0);
+}
 
 SingleEncoder& SlideDrive::GetSlideEncoder() {
 	return encoderSlide;

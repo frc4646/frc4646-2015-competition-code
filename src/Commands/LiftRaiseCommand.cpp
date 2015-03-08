@@ -2,6 +2,8 @@
 #include "../RobotMap.h"
 
 LiftRaiseCommand::LiftRaiseCommand()
+:CommandBase("LiftRaiseCommand")
+
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

@@ -4,6 +4,7 @@
 #include "LiftToBottomCommand.h"
 
 StackAndLower::StackAndLower()
+:CommandGroup("StackAndLower")
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

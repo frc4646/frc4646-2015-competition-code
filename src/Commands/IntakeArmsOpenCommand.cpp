@@ -1,6 +1,7 @@
 #include "IntakeArmsOpenCommand.h"
 
 IntakeArmsOpenCommand::IntakeArmsOpenCommand()
+:CommandBase("IntakeArmsOpenCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

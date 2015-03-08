@@ -1,10 +1,8 @@
-#include "DriveForDistance.h"
-#include "RobotMap.h"
+#include "TurnForRevolutions.h"
 
-DriveForDistance::DriveForDistance(double dist, double power):
-CommandBase("DriveForDistance"),
-encoderDist(dist),
-motorPower(power)
+TurnForRevolutions::TurnForRevolutions(double rotations, double power):
+rotate(rotations),
+power(power)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -12,33 +10,32 @@ motorPower(power)
 }
 
 // Called just before this Command runs the first time
-void DriveForDistance::Initialize()
+void TurnForRevolutions::Initialize()
 {
 	slidedrive->GetLeftEncoder().Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveForDistance::Execute()
+void TurnForRevolutions::Execute()
 {
-	slidedrive->Drive(-motorPower,0);
-	SmartDashboard::PutNumber("Encoder", slidedrive->GetLeftEncoder().GetDistance());
+	slidedrive->Drive(power, -1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveForDistance::IsFinished()
+bool TurnForRevolutions::IsFinished()
 {
-	return slidedrive->GetLeftEncoder().GetDistance() > encoderDist;
+	return slidedrive->GetLeftEncoder().GetDistance() < (rotate*(30*M_PI));
 }
 
 // Called once after isFinished returns true
-void DriveForDistance::End()
+void TurnForRevolutions::End()
 {
 	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveForDistance::Interrupted()
+void TurnForRevolutions::Interrupted()
 {
 	End();
 }

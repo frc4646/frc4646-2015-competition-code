@@ -1,6 +1,7 @@
 #include "SlideForTime.h"
 
 SlideForTime::SlideForTime(double power, double time):
+CommandBase("SlideForTime"),
 driveSpeed(power)
 {
 	Requires(slidedrive);

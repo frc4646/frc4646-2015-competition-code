@@ -1,11 +1,9 @@
-#include "GrabAndLift.h"
+#include "GrabThenReverse.h"
 #include "GrabberCloseCommand.h"
-#include "LiftForTime.h"
 #include "LiftToLevelCommand.h"
-#include "RobotMap.h"
+#include "DriveForDistance.h"
 
-GrabAndLift::GrabAndLift()
-:CommandGroup("GrabAndLift")
+GrabThenReverse::GrabThenReverse()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -24,5 +22,6 @@ GrabAndLift::GrabAndLift()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new GrabberCloseCommand(), 0.01);
-	AddSequential(new LiftToLevelCommand(LIFT_LEVEL_ONE));
+	AddSequential(new LiftToLevelCommand(1));
+	AddSequential(new DriveForDistance(60, -0.3));
 }

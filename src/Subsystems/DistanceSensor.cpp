@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 DistanceSensor::DistanceSensor() :
-		Subsystem("ExampleSubsystem"),
+		Subsystem("DistanceSensor"),
 		DistSensor(new AnalogInput(0))
 {
 }

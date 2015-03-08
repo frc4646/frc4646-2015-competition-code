@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 
 SlideForDistance::SlideForDistance(double dist, double power):
+CommandBase("SlideForDistance"),
 encoderDist(dist),
 motorPower(power)
 {
@@ -20,6 +21,7 @@ void SlideForDistance::Initialize()
 void SlideForDistance::Execute()
 {
 	slidedrive->DriveSlide(motorPower);
+	SmartDashboard::PutNumber("Slide Encoder Val", slidedrive->GetSlideEncoder().GetDistance());
 }
 
 // Make this return true when this Command no longer needs to run execute()

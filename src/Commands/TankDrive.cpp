@@ -1,6 +1,7 @@
 #include "TankDrive.h"
 
 TankDrive::TankDrive()
+:CommandBase("TankDrive")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

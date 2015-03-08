@@ -4,6 +4,7 @@
 #include "Commands/DriveUntilClose.h"
 
 AutoGrabToteCommand::AutoGrabToteCommand()
+:CommandGroup("AutoGrabToteCommand")
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

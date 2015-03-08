@@ -1,11 +1,10 @@
-#include "GrabAndLift.h"
-#include "GrabberCloseCommand.h"
-#include "LiftForTime.h"
-#include "LiftToLevelCommand.h"
-#include "RobotMap.h"
+#include "DriveUntilCloseWithIntake.h"
+#include "DriveUntilClose.h"
+#include "IntakeUntilClose.h"
+#include "IntakeArmsOpenCommand.h"
+#include "IntakeArmsCloseCommand.h"
 
-GrabAndLift::GrabAndLift()
-:CommandGroup("GrabAndLift")
+DriveUntilCloseWithIntake::DriveUntilCloseWithIntake()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,6 +22,9 @@ GrabAndLift::GrabAndLift()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GrabberCloseCommand(), 0.01);
-	AddSequential(new LiftToLevelCommand(LIFT_LEVEL_ONE));
+	AddSequential(new IntakeArmsOpenCommand());
+	AddParallel(new IntakeUntilClose(11));
+	AddSequential(new DriveUntilClose(11));
+	AddParallel(new IntakeArmsCloseCommand());
+	AddSequential(new IntakeUntilClose(7));
 }

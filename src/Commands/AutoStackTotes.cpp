@@ -6,6 +6,7 @@
 #include "SlideForDistance.h"
 
 AutoStackTotes::AutoStackTotes()
+: CommandGroup("AutoStackTotes")
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -27,6 +28,4 @@ AutoStackTotes::AutoStackTotes()
 //	AddSequential(new DriveUntilClose(), 7);
 //	AddSequential(new StackAndLower());
 //	AddSequential(new GrabAndLift());
-	AddSequential(new DriveForDistance(18*M_PI, 0.2));
-	AddSequential(new SlideForDistance(18*M_PI, 0.2));
 }

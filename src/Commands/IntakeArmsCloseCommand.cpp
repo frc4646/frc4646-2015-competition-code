@@ -1,6 +1,7 @@
 #include "IntakeArmsCloseCommand.h"
 
 IntakeArmsCloseCommand::IntakeArmsCloseCommand()
+:CommandBase("IntakeArmsCloseCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

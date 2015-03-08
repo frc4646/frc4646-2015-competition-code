@@ -1,6 +1,7 @@
 #include "GrabberOpenCommand.h"
 
 GrabberOpenCommand::GrabberOpenCommand()
+:CommandBase("GrabberOpenCommand")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

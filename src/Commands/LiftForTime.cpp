@@ -1,6 +1,7 @@
 #include "LiftForTime.h"
 
 LiftForTime::LiftForTime(double Speed, double time):
+CommandBase("LiftForTime"),
 speed(Speed)
 {
 	// Use Requires() here to declare subsystem dependencies
