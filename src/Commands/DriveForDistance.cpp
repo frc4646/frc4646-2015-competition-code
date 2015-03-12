@@ -20,7 +20,7 @@ void DriveForDistance::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveForDistance::Execute()
 {
-	slidedrive->Drive(-motorPower,0);
+	slidedrive->Drive(motorPower,0);
 	SmartDashboard::PutNumber("Encoder", slidedrive->GetLeftEncoder().GetDistance());
 }
 

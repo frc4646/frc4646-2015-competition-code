@@ -22,9 +22,9 @@ DriveUntilCloseWithIntake::DriveUntilCloseWithIntake()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new IntakeArmsOpenCommand());
-	AddParallel(new IntakeUntilClose(11));
-	AddSequential(new DriveUntilClose(11));
-	AddParallel(new IntakeArmsCloseCommand());
-	AddSequential(new IntakeUntilClose(7));
+	AddSequential(new IntakeArmsOpenCommand(), 0.01);
+	AddSequential(new DriveUntilClose(11),2);
+	AddParallel(new IntakeUntilClose(11),2);
+	AddSequential(new IntakeUntilClose(7),1);
+	AddParallel(new IntakeArmsCloseCommand(), 1);
 }

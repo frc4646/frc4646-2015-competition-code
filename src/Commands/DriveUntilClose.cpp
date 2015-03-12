@@ -13,13 +13,13 @@ DriveUntilClose::DriveUntilClose(double finalObjectDistance)
 // Called just before this Command runs the first time
 void DriveUntilClose::Initialize()
 {
-	slidedrive->Drive(.5,0);
+	slidedrive->Drive(-.5,0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveUntilClose::Execute()
 {
-	slidedrive->Drive(.5,0);
+	slidedrive->Drive(-.5,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

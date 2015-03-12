@@ -15,6 +15,7 @@ public:
 	void Interrupted();
 private:
 	double liftlevel;
+	bool isRaising;
 };
 
 #endif

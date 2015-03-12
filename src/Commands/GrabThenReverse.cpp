@@ -1,6 +1,7 @@
 #include "GrabThenReverse.h"
 #include "GrabberCloseCommand.h"
 #include "LiftToLevelCommand.h"
+#include "LiftRaiseCommand.h"
 #include "DriveForDistance.h"
 
 GrabThenReverse::GrabThenReverse()
@@ -22,6 +23,6 @@ GrabThenReverse::GrabThenReverse()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new GrabberCloseCommand(), 0.01);
-	AddSequential(new LiftToLevelCommand(1));
-	AddSequential(new DriveForDistance(60, -0.3));
+	AddSequential(new LiftRaiseCommand(), 0.5);
+	AddSequential(new DriveForDistance(60, 0.3));
 }

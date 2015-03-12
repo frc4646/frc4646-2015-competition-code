@@ -6,6 +6,8 @@
 
 class SetLedHeight: public CommandBase
 {
+private:
+	int counter;
 public:
 	SetLedHeight();
 	void Initialize();

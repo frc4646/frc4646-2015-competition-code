@@ -1,8 +1,9 @@
 #include "SetLedHeight.h"
 #include "RobotMap.h"
 
-SetLedHeight::SetLedHeight()
-:CommandBase("SetLedHeight")
+SetLedHeight::SetLedHeight():
+CommandBase("SetLedHeight"),
+counter(0)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -18,7 +19,15 @@ void SetLedHeight::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void SetLedHeight::Execute()
 {
-	ledsystem->sendLEDHeight(lift->GetEncoder().GetDistance()/INCH_PER_LED);
+	if (counter == 20)
+	{
+		ledsystem->sendLEDHeight(lift->GetEncoder().GetDistance()/INCH_PER_LED);
+		counter = 0;
+	}
+	else
+	{
+		counter = counter+1;
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

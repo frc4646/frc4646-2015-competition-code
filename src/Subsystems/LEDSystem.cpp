@@ -31,8 +31,8 @@ LEDSystem::LEDSystem() :
 	tty_old = tty;
 
 	/* Set Baud Rate */
-	cfsetospeed (&tty, (speed_t)B9600);
-	cfsetispeed (&tty, (speed_t)B9600);
+	cfsetospeed (&tty, (speed_t)B115200);
+	cfsetispeed (&tty, (speed_t)B115200);
 
 	/* Setting other Port Stuff */
 	tty.c_cflag     &=  ~PARENB;            // Make 8n1
@@ -58,7 +58,7 @@ LEDSystem::LEDSystem() :
 
 void LEDSystem::InitDefaultCommand()
 {
-	SetDefaultCommand(new SetLedHeight());
+//	SetDefaultCommand(new SetLedHeight());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
@@ -66,6 +66,7 @@ void LEDSystem::InitDefaultCommand()
 void LEDSystem::sendLEDHeight(int centerLEDHeight) {
 	std::string strHeight = std::to_string(centerLEDHeight) + "\n";
 	write(USB, strHeight.c_str(), strHeight.length());
+	fsync(USB);
 
 //	serialPort.Write(strHeight.c_str(), (int)strHeight.length());
 }

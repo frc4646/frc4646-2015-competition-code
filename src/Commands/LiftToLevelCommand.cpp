@@ -13,14 +13,14 @@ liftlevel(level)
 // Called just before this Command runs the first time
 void LiftToLevelCommand::Initialize()
 {
-
+	isRaising = fabs(lift->GetEncoder().GetDistance()) < liftlevel;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftToLevelCommand::Execute()
 {
 	SmartDashboard::PutData("EncoderValue", &lift->GetEncoder());
-	if (fabs(lift->GetEncoder().GetDistance()) < liftlevel)
+	if (isRaising)
 	{
 		lift->Set(oi->GetLiftSpeed());
 	}
@@ -28,14 +28,21 @@ void LiftToLevelCommand::Execute()
 	{
 		lift->Set(oi->GetLiftSpeed() * LIFT_LOWER_SPEED);
 	}
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftToLevelCommand::IsFinished()
 {
-	double error = fabs(lift->GetEncoder().GetDistance() - liftlevel);
+	if (isRaising)
+	{
+		return (fabs(lift->GetEncoder().GetDistance()) > liftlevel);
+	}
+	else
+	{
+		return (fabs(lift->GetEncoder().GetDistance()) < liftlevel);
+	}
 
-	return error < 0.1;
 }
 
 // Called once after isFinished returns true
