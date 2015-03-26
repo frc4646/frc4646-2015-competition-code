@@ -13,7 +13,7 @@ public:
 	~SlideDrive();
 	void InitDefaultCommand();
 
-	void HandleTankDrive(Joystick& left, Joystick& right);
+	void HandleTankDrive(Joystick& left, Joystick& right, bool fast=false);
 	void HandleSlide(Joystick& left, Joystick& right);
 	void HandleHolonomicDrive(Joystick& left, Joystick& right);
 	void TankIdle();

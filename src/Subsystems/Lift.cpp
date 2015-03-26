@@ -7,11 +7,12 @@ Lift::Lift() :
 		LiftSpeedControl(LIFT_DRIVE_PORT),
 		LiftSpeedControl2(LIFT_DRIVE_PORT2),
 		encoder(9, 8),
-		limitlower(4)
+		limitlower(4),
+		limitupper(3)
 {
 	encoder.Reset();
 	encoder.SetPIDSourceParameter(PIDSource::kRate);
-	encoder.SetDistancePerPulse((M_PI)/4096);
+	encoder.SetDistancePerPulse((M_PI)/4096.0);
 	encoder.SetReverseDirection(true);
 }
 
@@ -22,6 +23,13 @@ void Lift::InitDefaultCommand()
 }
 
 void Lift::Set(double speed) {
+	if(speed > 0)
+	{
+		if(!limitupper.Get())
+		{
+			speed = 0;
+		}
+	}
 	LiftSpeedControl.Set(speed);
 	LiftSpeedControl2.Set(speed);
 }

@@ -7,7 +7,7 @@
 class LiftToLevelCommand: public CommandBase
 {
 public:
-	LiftToLevelCommand(double level);
+	LiftToLevelCommand(double level, bool ignoreUser = false);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,6 +16,7 @@ public:
 private:
 	double liftlevel;
 	bool isRaising;
+	bool userIgnore;
 };
 
 #endif

@@ -1,9 +1,11 @@
 #include "LiftToLevelCommand.h"
 #include "RobotMap.h"
 
-LiftToLevelCommand::LiftToLevelCommand(double level):
+LiftToLevelCommand::LiftToLevelCommand(double level, bool ignoreUser):
 CommandBase("LiftToLevelCommand"),
-liftlevel(level)
+liftlevel(level),
+isRaising(false),
+userIgnore(ignoreUser)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -20,13 +22,19 @@ void LiftToLevelCommand::Initialize()
 void LiftToLevelCommand::Execute()
 {
 	SmartDashboard::PutData("EncoderValue", &lift->GetEncoder());
+	double baseValue = oi->GetLiftSpeed();
+	if (userIgnore)
+	{
+		baseValue = 0.75;
+	}
+
 	if (isRaising)
 	{
-		lift->Set(oi->GetLiftSpeed());
+		lift->Set(baseValue);
 	}
 	else
 	{
-		lift->Set(oi->GetLiftSpeed() * LIFT_LOWER_SPEED);
+		lift->Set(baseValue * LIFT_LOWER_SPEED);
 	}
 
 }

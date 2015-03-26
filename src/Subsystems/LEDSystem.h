@@ -4,17 +4,19 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include <SerialPort.h>
+#include <I2C.h>
 
 class LEDSystem: public Subsystem
 {
 private:
-	int USB;
+//	int USB;
+	I2C i2c;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	LEDSystem();
-	void InitDefaultCommand();
+	LEDSystem();	void InitDefaultCommand();
 	void sendLEDHeight(int centerLEDHeight);
+	void sendTeam();
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "GrabAndLift.h"
 #include "GrabberCloseCommand.h"
 #include "LiftForTime.h"
+#include "ResetEncoder.h"
 #include "LiftToLevelCommand.h"
 #include "RobotMap.h"
 
@@ -24,5 +25,6 @@ GrabAndLift::GrabAndLift()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new GrabberCloseCommand(), 0.01);
-	AddSequential(new LiftToLevelCommand(LIFT_LEVEL_ONE));
+	AddSequential(new ResetEncoder(), 0.01);
+	AddSequential(new LiftToLevelCommand(LIFT_LEVEL_THREE, true));
 }

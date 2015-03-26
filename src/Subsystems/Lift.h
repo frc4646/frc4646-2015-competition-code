@@ -13,6 +13,7 @@ private:
 	Victor LiftSpeedControl2;
 	Encoder encoder;
 	DigitalInput limitlower;
+	DigitalInput limitupper;
 public:
 	Lift();
 	void InitDefaultCommand();

@@ -11,6 +11,7 @@
 #include "Commands/StraightDriveCommand.h"
 #include "Commands/LiftToBottomCommand.h"
 #include "Commands/LiftToLevelCommand.h"
+#include "Commands/FastDriveCommand.h"
 #include "RobotMap.h"
 
 OI::OI():
@@ -25,6 +26,7 @@ OI::OI():
  	SlideOnly(&LeftStick,2),
 	SlideAndTank(&LeftStick,1),
 	StraightDrive(&LeftStick,3),
+	FastDrive(&RightStick,1),
 	LiftBottom(&MechanismStick,5),
 	LiftLevelOne(&MechanismStick, 9),
 	LiftLevelTwo(&MechanismStick, 10),
@@ -38,6 +40,7 @@ OI::OI():
 	SlideOnly.WhileHeld(new SlideOnlyCommand());
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
 	StraightDrive.WhileHeld(new StraightDriveCommand());
+	FastDrive.WhileHeld(new FastDriveCommand());
 
 	GrabberClose.WhileHeld(new GrabberCloseCommand());
 	GrabberOpen.WhileHeld(new GrabberOpenCommand());

@@ -1,11 +1,9 @@
-#include "GrabThenReverse.h"
-#include "GrabberCloseCommand.h"
-#include "GrabberOpenCommand.h"
-#include "LiftToLevelCommand.h"
-#include "LiftRaiseCommand.h"
+#include "TurnAndForward.h"
+#include "TurnForRevolutions.h"
 #include "DriveForDistance.h"
+#include "IntakeArmsCloseCommand.h"
 
-GrabThenReverse::GrabThenReverse()
+TurnAndForward::TurnAndForward()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,7 +21,9 @@ GrabThenReverse::GrabThenReverse()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GrabberCloseCommand(), 0.01);
-	AddSequential(new LiftRaiseCommand(), 0.5);
-	AddSequential(new DriveForDistance(72*1.3, 0.4));
+	AddSequential(new TurnForRevolutions(.25, .3));
+//	AddParallel(new IntakeArmsCloseCommand());
+	AddSequential(new DriveForDistance(72*1.4, -0.3));
+//	AddParallel(new IntakeArmsCloseCommand());
+
 }

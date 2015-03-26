@@ -11,6 +11,8 @@
 #include "Commands/TurnForRevolutions.h"
 #include "Commands/GrabThenReverse.h"
 #include "Commands/TotesMaGoats.h"
+#include "Commands/TurnAndForward.h"
+#include "Commands/GrabAndLift.h"
 
 class Robot: public IterativeRobot
 {
@@ -25,14 +27,12 @@ private:
 		CommandBase::init();
 //		autonomousCommand = new SquareDrive();
 		chooser = new SendableChooser();
-//		chooser->AddDefault("Auto Zone Forward", new DriveForDistance(60, 0.3));
-		chooser->AddObject("Auto Zone Backwards", new DriveForDistance(60, -0.3));
-		chooser->AddObject("Auto Zone Slide Right", new SlideForDistance(40, 0.5));
-		chooser->AddObject("Auto Zone Slide Left", new SlideForDistance(40,-0.5));
-		chooser->AddObject("Rotate one revolution CW", new TurnForRevolutions(1, 0.5));
-		chooser->AddObject("Rotate one revolution CCW", new TurnForRevolutions(1,-0.5));
-		chooser->AddDefault("Grab And Reverse", new GrabThenReverse());
-		chooser->AddObject("Grab Totes", new TotesMaGoats());
+		chooser->AddObject("Grab And Lift", new GrabAndLift());
+		chooser->AddObject("Grab And Reverse", new GrabThenReverse());
+//		chooser->AddObject("Grab Totes", new TotesMaGoats());
+		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
+//		chooser->AddDefault("foo", new TurnAndForward());
+
 		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();
 		comp = new Compressor();

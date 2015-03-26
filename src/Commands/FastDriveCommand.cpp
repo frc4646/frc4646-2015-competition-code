@@ -1,8 +1,6 @@
-#include "TurnForRevolutions.h"
+#include "FastDriveCommand.h"
 
-TurnForRevolutions::TurnForRevolutions(double rotations, double power):
-rotate(rotations),
-power(power)
+FastDriveCommand::FastDriveCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -10,33 +8,32 @@ power(power)
 }
 
 // Called just before this Command runs the first time
-void TurnForRevolutions::Initialize()
+void FastDriveCommand::Initialize()
 {
-	slidedrive->GetLeftEncoder().Reset();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TurnForRevolutions::Execute()
+void FastDriveCommand::Execute()
 {
-	intakearms->Close();
-	slidedrive->Drive(power, -1);
+	slidedrive->HandleTankDrive(oi->GetLeftStick(), oi->GetRightStick(), true);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TurnForRevolutions::IsFinished()
+bool FastDriveCommand::IsFinished()
 {
-	return slidedrive->GetLeftEncoder().GetDistance() < (rotate*(30*M_PI));
+	return false;
 }
 
 // Called once after isFinished returns true
-void TurnForRevolutions::End()
+void FastDriveCommand::End()
 {
 	slidedrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TurnForRevolutions::Interrupted()
+void FastDriveCommand::Interrupted()
 {
 	End();
 }

@@ -46,18 +46,24 @@ void SlideDrive::InitDefaultCommand()
 	//TODO: Non-sketchy way to switch these.
 }
 
-void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right) {
+void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right, bool fast) {
 	SmartDashboard::PutData("LeftEncoder", &encoderLeft);
 	SmartDashboard::PutData("RightEncoder", &encoderRight);
 	SmartDashboard::PutData("SlideEncoder", &encoderSlide);
+	double scale = .75;
+	if (fast)
+	{
+		scale = 1;
+
+	}
 	if (TankEnabled)
 	{
-		DriveTrain.TankDrive(left,right);
+		DriveTrain.TankDrive(left.GetRawAxis(1)*scale,right.GetRawAxis(1)*scale);
 	}
 }
 
 void SlideDrive::HandleSlide(Joystick& left, Joystick& right) {
-	SlideSpeedController.Set(left.GetRawAxis(0));
+	SlideSpeedController.Set(-left.GetRawAxis(0));
 }
 
 void SlideDrive::HandleHolonomicDrive(Joystick& left, Joystick& right) {
