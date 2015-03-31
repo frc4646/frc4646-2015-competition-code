@@ -81,12 +81,12 @@ void LEDSystem::sendTeam() {
 	DriverStation::Alliance color;
 	color = DriverStation::GetInstance()->GetAlliance();
 	if(color == DriverStation::Alliance::kBlue){
-		std::cout << "Sending thing";
+		std::cout << "Sending blue thing";
 		unsigned char charTeam = 0;
 		i2c.Transaction(&charTeam, 1, NULL,0);
 	}
 	else {
-		std::cout << "Sending thing";
+		std::cout << "Sending red thing";
 		unsigned char charTeam = 1;
 		i2c.Transaction(&charTeam, 1, NULL,0);
 	}
