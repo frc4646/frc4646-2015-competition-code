@@ -22,6 +22,7 @@ public:
 	Encoder& GetEncoder();
 
 	DigitalInput& GetLimitLower();
+	DigitalInput& GetLimitUpper();
 };
 
 #endif

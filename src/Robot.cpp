@@ -13,6 +13,7 @@
 #include "Commands/TotesMaGoats.h"
 #include "Commands/TurnAndForward.h"
 #include "Commands/GrabAndLift.h"
+#include "Commands/DemoMode.h"
 
 class Robot: public IterativeRobot
 {

@@ -1,5 +1,6 @@
 #include "Lift.h"
 #include "../RobotMap.h"
+#include <math.h>
 
 
 Lift::Lift() :
@@ -45,6 +46,10 @@ Encoder& Lift::GetEncoder() {
 
 DigitalInput& Lift::GetLimitLower() {
 	return limitlower;
+}
+
+DigitalInput& Lift::GetLimitUpper() {
+	return limitupper;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
