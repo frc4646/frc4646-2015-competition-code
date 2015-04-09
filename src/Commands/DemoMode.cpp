@@ -8,6 +8,8 @@
 #include "LiftForTime.h"
 #include <unistd.h>
 
+#include "Commands/WaitCommand.h"
+
 DemoMode::DemoMode()
 {
 	// Add Commands here:
@@ -28,13 +30,13 @@ DemoMode::DemoMode()
 	// arm.
 	AddSequential(new GrabberCloseCommand());
 	AddSequential(new ResetEncoder(), 0.01);
-	while(true){
+	for(int i=0; i < 1000; i++){
 		AddSequential(new LiftToTopCommand());
 		AddSequential(new LiftForTime(-.2, .01));
-		sleep(10);	 //Don't try running this on Windows
+		addSequential(new WaitCommand(10));
 		AddSequential(new LiftToLevelCommand(0, true)); //this should be lift to bottom but we took off the limit switch
 		AddSequential(new GrabberOpenCommand());
-		sleep(10);
+		addSequential(new WaitCommand(10));
 		AddSequential(new GrabberCloseCommand());
 	}
 }
