@@ -33,10 +33,10 @@ DemoMode::DemoMode()
 	for(int i=0; i < 1000; i++){
 		AddSequential(new LiftToTopCommand());
 		AddSequential(new LiftForTime(-.2, .01));
-		addSequential(new WaitCommand(10));
+		AddSequential(new WaitCommand(10));
 		AddSequential(new LiftToLevelCommand(0, true)); //this should be lift to bottom but we took off the limit switch
 		AddSequential(new GrabberOpenCommand());
-		addSequential(new WaitCommand(10));
+		AddSequential(new WaitCommand(10));
 		AddSequential(new GrabberCloseCommand());
 	}
 }
