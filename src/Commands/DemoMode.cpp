@@ -5,6 +5,7 @@
 #include "ResetEncoder.h"
 #include "RobotMap.h"
 #include "LiftToTopCommand.h"
+#include "LiftForTime.h"
 #include <unistd.h>
 
 DemoMode::DemoMode()
@@ -29,6 +30,7 @@ DemoMode::DemoMode()
 	AddSequential(new ResetEncoder(), 0.01);
 	while(true){
 		AddSequential(new LiftToTopCommand());
+		AddSequential(new LiftForTime(-.2, .01));
 		sleep(10);	 //Don't try running this on Windows
 		AddSequential(new LiftToLevelCommand(0, true)); //this should be lift to bottom but we took off the limit switch
 		AddSequential(new GrabberOpenCommand());

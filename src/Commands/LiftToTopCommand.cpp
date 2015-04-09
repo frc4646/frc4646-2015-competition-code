@@ -17,7 +17,8 @@ void LiftToTopCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LiftToTopCommand::Execute()
 {
-	lift->Set(oi->GetLiftSpeed());
+//	lift->Set(oi->GetLiftSpeed());
+	lift->Set(0.25); // heve to be careful to not kill the switch or kevlar
 }
 
 // Make this return true when this Command no longer needs to run execute()
