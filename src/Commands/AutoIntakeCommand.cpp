@@ -1,41 +1,41 @@
-#include "LiftToTopCommand.h"
-#include "RobotMap.h"
+#include "AutoIntakeCommand.h"
 
-LiftToTopCommand::LiftToTopCommand()
+AutoIntakeCommand::AutoIntakeCommand(double Power):
+power(Power)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(lift);
+	Requires(intakerollers);
 }
 
 // Called just before this Command runs the first time
-void LiftToTopCommand::Initialize()
+void AutoIntakeCommand::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LiftToTopCommand::Execute()
+void AutoIntakeCommand::Execute()
 {
-//	lift->Set(oi->GetLiftSpeed());
-	lift->Set(0.35); // heve to be careful to not kill the switch or kevlar
+	intakerollers->SetLeft(power);
+	intakerollers->SetRight(-power);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LiftToTopCommand::IsFinished()
+bool AutoIntakeCommand::IsFinished()
 {
-	return !lift->GetLimitUpper().Get();
+	return false;
 }
 
 // Called once after isFinished returns true
-void LiftToTopCommand::End()
+void AutoIntakeCommand::End()
 {
-	lift->Set(0);
+	End();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LiftToTopCommand::Interrupted()
+void AutoIntakeCommand::Interrupted()
 {
-	End();
+
 }

@@ -44,11 +44,13 @@ bool LiftToLevelCommand::IsFinished()
 {
 	if (isRaising)
 	{
-		return (fabs(lift->GetEncoder().GetDistance()) > liftlevel);
+//		return (fabs(lift->GetEncoder().GetDistance()) > liftlevel);
+		return (lift->GetEncoder().GetDistance() > liftlevel);
 	}
 	else
 	{
-		return (fabs(lift->GetEncoder().GetDistance()) < liftlevel);
+//		return (fabs(lift->GetEncoder().GetDistance()) < liftlevel);
+		return (lift->GetEncoder().GetDistance() < liftlevel);
 	}
 
 }

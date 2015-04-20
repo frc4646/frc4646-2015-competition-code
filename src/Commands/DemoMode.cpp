@@ -6,6 +6,8 @@
 #include "RobotMap.h"
 #include "LiftToTopCommand.h"
 #include "LiftForTime.h"
+#include "AutoIntakeCommand.h"
+#include "IntakeArmsCloseCommand.h"
 #include <unistd.h>
 
 #include "Commands/WaitCommand.h"
@@ -28,15 +30,22 @@ DemoMode::DemoMode()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GrabberCloseCommand());
+	AddSequential(new GrabberCloseCommand(), 0.01);
 	AddSequential(new ResetEncoder(), 0.01);
 	for(int i=0; i < 1000; i++){
-		AddSequential(new LiftToTopCommand());
-		AddSequential(new LiftForTime(-.2, .01));
-		AddSequential(new WaitCommand(10));
+		AddSequential(new WaitCommand(1));
+//		AddSequential(new LiftToTopCommand());
+		AddSequential(new LiftToLevelCommand(LIFT_LEVEL_TWO));
+//		AddSequential(new LiftForTime(-.2, .01));
+		AddSequential(new WaitCommand(5));
 		AddSequential(new LiftToLevelCommand(0, true)); //this should be lift to bottom but we took off the limit switch
-		AddSequential(new GrabberOpenCommand());
-		AddSequential(new WaitCommand(10));
-		AddSequential(new GrabberCloseCommand());
+		AddSequential(new WaitCommand(1));
+		AddSequential(new GrabberOpenCommand(), 0.01);
+		AddParallel(new IntakeArmsCloseCommand(), .25);
+		AddSequential(new AutoIntakeCommand(-.5), .25);
+		AddSequential(new WaitCommand(5));
+		AddParallel(new IntakeArmsCloseCommand(), .25);
+		AddSequential(new AutoIntakeCommand(.5), .25);
+		AddSequential(new GrabberCloseCommand(), 0.01);
 	}
 }
