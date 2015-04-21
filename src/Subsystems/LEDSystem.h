@@ -17,6 +17,7 @@ public:
 	LEDSystem();	void InitDefaultCommand();
 	void sendLEDHeight(int centerLEDHeight);
 	void sendTeam();
+	void sendNumber(int numberToSend);
 };
 
 #endif

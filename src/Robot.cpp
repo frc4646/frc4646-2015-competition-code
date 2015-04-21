@@ -13,6 +13,7 @@
 #include "Commands/TotesMaGoats.h"
 #include "Commands/TurnAndForward.h"
 #include "Commands/GrabAndLift.h"
+#include "Commands/DemoMode.h"
 
 class Robot: public IterativeRobot
 {
@@ -31,6 +32,7 @@ private:
 		chooser->AddObject("Grab And Reverse", new GrabThenReverse());
 //		chooser->AddObject("Grab Totes", new TotesMaGoats());
 		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
+		chooser->AddDefault("Demo Mode (DO NOT USE AT COMPETITION)", new DemoMode());
 //		chooser->AddDefault("foo", new TurnAndForward());
 
 		SmartDashboard::PutData("Autonomous mode", chooser);

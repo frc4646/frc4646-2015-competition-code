@@ -1,8 +1,8 @@
 #include "IntakeUntilClose.h"
 
-IntakeUntilClose::IntakeUntilClose(double finalObjectDistance)
-: CommandBase("IntakeUntilClose"),
-  m_finalObjectDistance(finalObjectDistance)
+IntakeUntilClose::IntakeUntilClose(double finalObjectDistance):
+CommandBase("IntakeUntilClose"),
+m_finalObjectDistance(finalObjectDistance)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

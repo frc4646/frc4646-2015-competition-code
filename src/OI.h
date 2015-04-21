@@ -18,6 +18,7 @@ private:
 	Joystick LeftStick;
 	Joystick RightStick;
 	Joystick MechanismStick;
+	Joystick DemoButton;
 	JoystickButton GrabberClose;
 	JoystickButton GrabberOpen;
 	JoystickButton IntakeClose;
@@ -32,6 +33,7 @@ private:
 	JoystickButton LiftLevelTwo;
 	JoystickButton LiftLevelThree;
 	JoystickButton LiftLevelFour;
+	JoystickButton DemoModeButton;
 //	JoystickButton LiftLevelFive;
 //	JoystickButton LiftLevelSix;
 

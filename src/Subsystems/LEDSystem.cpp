@@ -91,5 +91,11 @@ void LEDSystem::sendTeam() {
 		i2c.Transaction(&charTeam, 1, NULL,0);
 	}
 }
+
+void LEDSystem::sendNumber(int numberToSend) {
+	std::cout << "Sending thing";
+	unsigned char charNum = numberToSend;
+	i2c.Transaction(&charNum, 1, NULL,0);
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
