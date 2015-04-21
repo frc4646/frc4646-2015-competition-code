@@ -7,7 +7,7 @@ Lift::Lift() :
 		Subsystem("Lift"),
 		LiftSpeedControl(LIFT_DRIVE_PORT),
 		LiftSpeedControl2(LIFT_DRIVE_PORT2),
-		encoder(9, 8),
+		encoder(8, 9),
 		limitlower(4),
 		limitupper(3)
 {

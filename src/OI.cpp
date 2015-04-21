@@ -12,12 +12,14 @@
 #include "Commands/LiftToBottomCommand.h"
 #include "Commands/LiftToLevelCommand.h"
 #include "Commands/FastDriveCommand.h"
+#include "Commands/DemoMode.h"
 #include "RobotMap.h"
 
 OI::OI():
 	LeftStick(0),
 	RightStick(1),
 	MechanismStick(2),
+	DemoButton(3),
 	GrabberClose(&MechanismStick,1),
 	GrabberOpen(&MechanismStick,3),
  	IntakeClose(&MechanismStick,11),
@@ -31,7 +33,8 @@ OI::OI():
 	LiftLevelOne(&MechanismStick, 9),
 	LiftLevelTwo(&MechanismStick, 10),
 	LiftLevelThree(&MechanismStick, 7),
-	LiftLevelFour(&MechanismStick, 8)
+	LiftLevelFour(&MechanismStick, 8),
+	DemoModeButton(&DemoButton,1)
 //	LiftLevelFive(&MechanismStick, 7),
 //	LiftLevelSix(&MechanismStick, 8)
 {
@@ -52,6 +55,7 @@ OI::OI():
 	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));
 	LiftLevelThree.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_THREE));
 	LiftLevelFour.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FOUR));
+	DemoModeButton.WhenPressed(new DemoMode());
 //	LiftLevelFive.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FIVE));
 //	LiftLevelSix.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_SIX));
 }

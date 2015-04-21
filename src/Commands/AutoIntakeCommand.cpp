@@ -30,6 +30,8 @@ bool AutoIntakeCommand::IsFinished()
 // Called once after isFinished returns true
 void AutoIntakeCommand::End()
 {
+	intakerollers->SetLeft(0);
+	intakerollers->SetRight(0);
 	End();
 }
 
@@ -37,5 +39,6 @@ void AutoIntakeCommand::End()
 // subsystems is scheduled to run
 void AutoIntakeCommand::Interrupted()
 {
-
+	intakerollers->SetLeft(0);
+	intakerollers->SetRight(0);
 }

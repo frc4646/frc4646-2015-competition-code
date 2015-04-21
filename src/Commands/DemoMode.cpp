@@ -32,20 +32,20 @@ DemoMode::DemoMode()
 	// arm.
 	AddSequential(new GrabberCloseCommand(), 0.01);
 	AddSequential(new ResetEncoder(), 0.01);
-	for(int i=0; i < 1000; i++){
+//	for(int i=0; i < 1000; i++){
 		AddSequential(new WaitCommand(1));
 //		AddSequential(new LiftToTopCommand());
-		AddSequential(new LiftToLevelCommand(LIFT_LEVEL_TWO));
+		AddSequential(new LiftToLevelCommand(LIFT_LEVEL_TWO, true));
 //		AddSequential(new LiftForTime(-.2, .01));
-		AddSequential(new WaitCommand(5));
+		AddSequential(new WaitCommand(1));
 		AddSequential(new LiftToLevelCommand(0, true)); //this should be lift to bottom but we took off the limit switch
 		AddSequential(new WaitCommand(1));
 		AddSequential(new GrabberOpenCommand(), 0.01);
-		AddParallel(new IntakeArmsCloseCommand(), .25);
-		AddSequential(new AutoIntakeCommand(-.5), .25);
-		AddSequential(new WaitCommand(5));
-		AddParallel(new IntakeArmsCloseCommand(), .25);
-		AddSequential(new AutoIntakeCommand(.5), .25);
+		AddParallel(new IntakeArmsCloseCommand(), 1);
+		AddSequential(new AutoIntakeCommand(-.40), 1);
+		AddSequential(new WaitCommand(1));
+		AddParallel(new IntakeArmsCloseCommand(), 1);
+		AddSequential(new AutoIntakeCommand(.40), 1);
 		AddSequential(new GrabberCloseCommand(), 0.01);
-	}
+//	}
 }
