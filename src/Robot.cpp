@@ -34,6 +34,7 @@ private:
 		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
 //		chooser->AddDefault("Demo Mode (DO NOT USE AT COMPETITION)", new DemoMode());
 //		chooser->AddDefault("foo", new TurnAndForward());
+		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
 
 		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();

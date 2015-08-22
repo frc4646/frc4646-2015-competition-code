@@ -1,6 +1,7 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <Subsystems/GyroSubsystem.h>
 #include <string>
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
@@ -13,6 +14,8 @@
 #include "Subsystems/SlideDrive.h"
 #include "Subsystems/DistanceSensor.h"
 #include "Subsystems/LEDSystem.h"
+#include "Subsystems/GyroSubsystem.h"
+#include "Subsystems/BatteryMonitor.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -35,6 +38,8 @@ public:
 	static SlideDrive* slidedrive;
 	static DistanceSensor* distancesensor;
 	static LEDSystem* ledsystem;
+	static GyroSubsystem* gyrosubsystem;
+	static BatteryMonitor* batterymonitor;
 };
 
 #endif

@@ -2,6 +2,7 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Commands/Scheduler.h"
 
+
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
@@ -12,6 +13,8 @@ Lift* CommandBase::lift = NULL;
 SlideDrive* CommandBase::slidedrive = NULL;
 DistanceSensor* CommandBase::distancesensor = NULL;
 LEDSystem* CommandBase::ledsystem = NULL;
+GyroSubsystem* CommandBase::gyrosubsystem = NULL;
+BatteryMonitor* CommandBase::batterymonitor = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -37,6 +40,8 @@ void CommandBase::init()
 	slidedrive = new SlideDrive();
 	distancesensor = new DistanceSensor();
 	ledsystem = new LEDSystem();
+	gyrosubsystem = new GyroSubsystem();
+	batterymonitor = new BatteryMonitor();
 
 	oi = new OI();
 
