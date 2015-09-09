@@ -2,6 +2,7 @@
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
 #include "../Commands/HolonomicDrive.h"
+#include <cmath>
 
 SlideDrive::SlideDrive() :
 		Subsystem("SlideDrive"),
@@ -50,7 +51,7 @@ void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right, bool fast) {
 	SmartDashboard::PutData("LeftEncoder", &encoderLeft);
 	SmartDashboard::PutData("RightEncoder", &encoderRight);
 	SmartDashboard::PutData("SlideEncoder", &encoderSlide);
-	double scale = .75;
+	double scale = .50;
 	if (fast)
 	{
 		scale = 1;
@@ -58,7 +59,7 @@ void SlideDrive::HandleTankDrive(Joystick& left, Joystick& right, bool fast) {
 	}
 	if (TankEnabled)
 	{
-		DriveTrain.TankDrive(left.GetRawAxis(1)*scale,right.GetRawAxis(1)*scale);
+		DriveTrain.TankDrive(pow(left.GetRawAxis(1),2)*scale,pow(right.GetRawAxis(1),2)*scale);
 	}
 }
 

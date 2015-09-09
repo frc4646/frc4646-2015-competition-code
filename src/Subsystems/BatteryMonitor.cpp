@@ -20,7 +20,7 @@ void BatteryMonitor::InitDefaultCommand()
 void BatteryMonitor::CheckVoltage()
 {
 	double voltage = DriverStation::GetInstance()->GetBatteryVoltage();
-	if (voltage < 9) {
+	if (voltage < 10.5) {
 		batLowCount++;
 	}
 	else {

@@ -58,6 +58,7 @@ tmp/
 .settings/
 .loadpath
 .project
+.cproject
 /.idea
 
 # Toast/GradleRIO
