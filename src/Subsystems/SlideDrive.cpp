@@ -10,8 +10,8 @@ SlideDrive::SlideDrive() :
 		SlideSpeedController(SLIDE_DRIVE_PORT),
 		DriveTrain(LeftSpeedController,RightSpeedController),
 		TankEnabled(true),
-		encoderLeft(6),
-		encoderRight(5),
+		encoderLeft(5),
+		encoderRight(6),
 		encoderSlide(7),
 		teleopChoice(new SendableChooser)
 {

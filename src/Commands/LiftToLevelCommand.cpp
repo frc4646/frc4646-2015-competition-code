@@ -25,7 +25,7 @@ void LiftToLevelCommand::Execute()
 	double baseValue = oi->GetLiftSpeed();
 	if (userIgnore)
 	{
-		baseValue = 0.75;
+		baseValue = 0.4;
 	}
 
 	if (isRaising)

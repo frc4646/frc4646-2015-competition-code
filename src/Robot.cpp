@@ -14,6 +14,9 @@
 #include "Commands/TurnAndForward.h"
 #include "Commands/GrabAndLift.h"
 #include "Commands/DemoMode.h"
+#include "Commands/RotateClockwiseAngle.h"
+#include "Commands/RotateCounterclockwiseAngle.h"
+#include "Commands/ThreeToteAuto.h"
 
 class Robot: public IterativeRobot
 {
@@ -30,11 +33,12 @@ private:
 		chooser = new SendableChooser();
 		chooser->AddObject("Grab And Lift", new GrabAndLift());
 		chooser->AddObject("Grab And Reverse", new GrabThenReverse());
-//		chooser->AddObject("Grab Totes", new TotesMaGoats());
+		chooser->AddObject("Grab Totes", new ThreeToteAuto());
 		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
 //		chooser->AddDefault("Demo Mode (DO NOT USE AT COMPETITION)", new DemoMode());
 //		chooser->AddDefault("foo", new TurnAndForward());
-		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
+		chooser->AddObject("Turn 90 degrees clockwise", new RotateClockwiseAngle(90, .25));
+		chooser->AddObject("Turn 90 degrees counterclockwise", new RotateCounterclockwiseAngle(90, .25));
 
 		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();

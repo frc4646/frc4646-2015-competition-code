@@ -15,19 +15,21 @@ motorPower(power)
 void DriveForDistance::Initialize()
 {
 	slidedrive->GetLeftEncoder().Reset();
+	slidedrive->GetRightEncoder().Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForDistance::Execute()
 {
 	slidedrive->Drive(motorPower,0);
-	SmartDashboard::PutNumber("Encoder", slidedrive->GetLeftEncoder().GetDistance());
+	SmartDashboard::PutNumber("Left Encoder", slidedrive->GetLeftEncoder().GetDistance());
+	SmartDashboard::PutNumber("Right Encoder", slidedrive->GetRightEncoder().GetDistance());
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForDistance::IsFinished()
 {
-	return slidedrive->GetLeftEncoder().GetDistance() > encoderDist;
+	return slidedrive->GetLeftEncoder().GetDistance() > encoderDist && slidedrive->GetRightEncoder().GetDistance() > encoderDist;
 }
 
 // Called once after isFinished returns true

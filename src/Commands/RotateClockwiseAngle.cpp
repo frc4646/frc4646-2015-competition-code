@@ -1,7 +1,7 @@
 #include "RotateClockwiseAngle.h"
 
 RotateClockwiseAngle::RotateClockwiseAngle(double angle, double power):
-StartingAngle(gyrosubsystem->GetAngle()),
+//StartingAngle(gyrosubsystem->GetAngle()),
 StartingPower(power),
 FinishingAngle(angle)
 {
@@ -14,14 +14,14 @@ FinishingAngle(angle)
 // Called just before this Command runs the first time
 void RotateClockwiseAngle::Initialize()
 {
-
+	StartingAngle = gyrosubsystem->GetAngle();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RotateClockwiseAngle::Execute()
 {
 	// Left forward right backward
-	slidedrive->Drive(StartingPower,1);
+	slidedrive->Drive(StartingPower,-1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

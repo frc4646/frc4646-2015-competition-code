@@ -7,7 +7,7 @@ GyroSubsystem::GyroSubsystem() :
 		GyroSensor(new Gyro(1))
 {
 	SmartDashboard::PutData("GyroValue", GyroSensor.get());
-
+	SmartDashboard::PutNumber("GyroDouble", GyroSensor->GetAngle());
 }
 
 void GyroSubsystem::InitDefaultCommand()
@@ -24,6 +24,7 @@ double GyroSubsystem::GetAngle() {
 void GyroSubsystem::SendData()
 {
 	SmartDashboard::PutData("GyroValue", GyroSensor.get());
+	SmartDashboard::PutNumber("GyroDouble", GyroSensor->GetAngle());
 
 
 }
