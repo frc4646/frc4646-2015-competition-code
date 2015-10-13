@@ -24,7 +24,13 @@ double PIDDriveRight::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;	
-	encoderRight.GetRate();
+	double rate = encoderRight.GetRate();
+		if(rate > 120.0){
+			rate = 120.0;
+		}else if(rate < -120){
+			rate = -120;
+		}
+		return rate/120; //120 is max speed in in/s
 }
 
 void PIDDriveRight::UsePIDOutput(double output)

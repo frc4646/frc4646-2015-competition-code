@@ -16,8 +16,7 @@
 #include "Subsystems/LEDSystem.h"
 #include "Subsystems/GyroSubsystem.h"
 #include "Subsystems/BatteryMonitor.h"
-#include "Subsystems/PIDDriveLeft.h"
-#include "Subsystems/PIDDriveRight.h"
+#include "Subsystems/PIDDrive.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -42,8 +41,7 @@ public:
 	static LEDSystem* ledsystem;
 	static GyroSubsystem* gyrosubsystem;
 	static BatteryMonitor* batterymonitor;
-	static PIDDriveLeft* piddriveleft;
-	static PIDDriveRight* piddriveright;
+	static PIDDrive* piddrive;
 };
 
 #endif

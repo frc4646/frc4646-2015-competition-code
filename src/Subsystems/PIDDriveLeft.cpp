@@ -20,15 +20,24 @@ PIDDriveLeft::PIDDriveLeft() :
 }
 
 double PIDDriveLeft::ReturnPIDInput()
-
 {
-
+	// Return your input value for the PID loop
+	// e.g. a sensor, like a potentiometer:
+	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
+	double rate = encoderLeft.GetRate();
+	if(rate > 120.0){
+		rate = 120.0;
+	}else if(rate < -120){
+		rate = -120;
+	}
+	return rate/120; //120 is max speed in in/s
 }
 
 void PIDDriveLeft::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
+	LeftSpeedController.SetSpeed(output);
 }
 
 void PIDDriveLeft::InitDefaultCommand()

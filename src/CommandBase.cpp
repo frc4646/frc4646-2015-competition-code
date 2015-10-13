@@ -15,8 +15,7 @@ DistanceSensor* CommandBase::distancesensor = NULL;
 LEDSystem* CommandBase::ledsystem = NULL;
 GyroSubsystem* CommandBase::gyrosubsystem = NULL;
 BatteryMonitor* CommandBase::batterymonitor = NULL;
-PIDDriveLeft* CommandBase::piddriveleft = NULL;
-PIDDriveRight* CommandBase::piddriveright = NULL;
+PIDDrive* CommandBase::piddrive = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -44,8 +43,7 @@ void CommandBase::init()
 	ledsystem = new LEDSystem();
 	gyrosubsystem = new GyroSubsystem();
 	batterymonitor = new BatteryMonitor();
-	piddriveleft = new PIDDriveLeft();
-	piddriveright = new PIDDriveRight();
+	piddrive = new PIDDrive();
 
 	oi = new OI();
 
