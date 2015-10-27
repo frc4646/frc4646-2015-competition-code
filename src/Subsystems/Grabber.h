@@ -10,12 +10,16 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	DoubleSolenoid GrabberSolenoid;
+	DoubleSolenoid CanGrabber;
 public:
 	Grabber();
 	void InitDefaultCommand();
 	void Open();
 	void Close();
+	void CanOpen();
+	void CanClose();
 	void Idle();
+	void CanIdle(); //These look like booleans but deal with it
 };
 
 #endif

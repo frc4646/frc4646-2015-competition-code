@@ -19,16 +19,16 @@ void BatteryMonitor::InitDefaultCommand()
 
 void BatteryMonitor::CheckVoltage()
 {
-	double voltage = DriverStation::GetInstance()->GetBatteryVoltage();
-	if (voltage < 9) {
-		batLowCount++;
-	}
-	else {
-		batLowCount = 0;
-	}
-	if (batLowCount>=BAT_LOW_TIMEOUT) {
-		voltage/=0;
-	}
+//	double voltage = DriverStation::GetInstance()->GetBatteryVoltage();
+//	if (voltage < 9) {
+//		batLowCount++;
+//	}
+//	else {
+//		batLowCount = 0;
+//	}
+//	if (batLowCount>=BAT_LOW_TIMEOUT) {
+//		voltage/=0;
+//	}
 }
 
 // Put methods for controlling this subsystem

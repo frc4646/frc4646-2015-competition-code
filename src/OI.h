@@ -28,9 +28,10 @@ private:
 	JoystickButton SlideAndTank;
 	JoystickButton StraightDrive;
 	JoystickButton FastDrive;
+	JoystickButton OpenEverything;
 	JoystickButton LiftBottom;
-	JoystickButton LiftLevelOne;
-	JoystickButton LiftLevelTwo;
+	JoystickButton OpenCan;
+	JoystickButton CloseCan;
 	JoystickButton LiftLevelThree;
 	JoystickButton LiftLevelFour;
 	JoystickButton DemoModeButton;

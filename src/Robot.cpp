@@ -33,12 +33,12 @@ private:
 		chooser = new SendableChooser();
 		chooser->AddObject("Grab And Lift", new GrabAndLift());
 		chooser->AddObject("Grab And Reverse", new GrabThenReverse());
-		chooser->AddObject("Grab Totes", new ThreeToteAuto());
+//		chooser->AddObject("Grab Totes", new ThreeToteAuto());
 		chooser->AddDefault("Do Nothing", new DriveForDistance(0, 0));
 //		chooser->AddDefault("Demo Mode (DO NOT USE AT COMPETITION)", new DemoMode());
 //		chooser->AddDefault("foo", new TurnAndForward());
-		chooser->AddObject("Turn 90 degrees clockwise", new RotateClockwiseAngle(90, .25));
-		chooser->AddObject("Turn 90 degrees counterclockwise", new RotateCounterclockwiseAngle(90, .25));
+//		chooser->AddObject("Turn 90 degrees clockwise", new RotateClockwiseAngle(90, .25));
+//		chooser->AddObject("Turn 90 degrees counterclockwise", new RotateCounterclockwiseAngle(90, .25));
 
 		SmartDashboard::PutData("Autonomous mode", chooser);
 		lw = LiveWindow::GetInstance();

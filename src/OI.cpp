@@ -13,6 +13,9 @@
 #include "Commands/LiftToLevelCommand.h"
 #include "Commands/FastDriveCommand.h"
 #include "Commands/DemoMode.h"
+#include "Commands/CanOpenCommand.h"
+#include "Commands/OpenASAP.h"
+#include "Commands/CanCloseCommand.h"
 #include "RobotMap.h"
 
 OI::OI():
@@ -29,9 +32,10 @@ OI::OI():
 	SlideAndTank(&LeftStick,1),
 	StraightDrive(&LeftStick,3),
 	FastDrive(&RightStick,1),
+	OpenEverything(&RightStick,4),
 	LiftBottom(&MechanismStick,5),
-	LiftLevelOne(&MechanismStick, 9),
-	LiftLevelTwo(&MechanismStick, 10),
+	OpenCan(&MechanismStick, 9),
+	CloseCan(&MechanismStick, 10),
 	LiftLevelThree(&MechanismStick, 7),
 	LiftLevelFour(&MechanismStick, 8),
 	DemoModeButton(&DemoButton,1)
@@ -44,17 +48,19 @@ OI::OI():
 	SlideAndTank.WhileHeld(new TankAndSlideCommand());
 	StraightDrive.WhileHeld(new StraightDriveCommand());
 	FastDrive.WhileHeld(new FastDriveCommand());
-
 	GrabberClose.WhileHeld(new GrabberCloseCommand());
 	GrabberOpen.WhileHeld(new GrabberOpenCommand());
 	IntakeClose.WhileHeld(new IntakeArmsCloseCommand());
 	LiftRaise.WhileHeld(new LiftRaiseCommand());
 	LiftLower.WhileHeld(new LiftLowerCommand());
-	LiftBottom.WhenPressed(new LiftToBottomCommand());
-	LiftLevelOne.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_ONE));
-	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));
-	LiftLevelThree.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_THREE));
-	LiftLevelFour.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FOUR));
+	OpenEverything.WhileHeld(new OpenASAP());
+	OpenCan.WhileHeld(new CanOpenCommand());
+	CloseCan.WhileHeld(new CanCloseCommand());
+//	LiftBottom.WhenPressed(new LiftToBottomCommand());
+//	LiftLevelOne.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_ONE));
+//	LiftLevelTwo.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_TWO));
+//	LiftLevelThree.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_THREE));
+//	LiftLevelFour.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FOUR));
 	DemoModeButton.WhenPressed(new DemoMode());
 //	LiftLevelFive.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_FIVE));
 //	LiftLevelSix.WhenPressed(new LiftToLevelCommand(LIFT_LEVEL_SIX));

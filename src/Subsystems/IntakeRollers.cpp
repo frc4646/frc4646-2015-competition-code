@@ -17,11 +17,11 @@ void IntakeRollers::InitDefaultCommand()
 }
 
 void IntakeRollers::SetLeft(float speed) {
-	LeftController.Set(speed);
+	LeftController.Set(speed/2);
 }
 
 void IntakeRollers::SetRight(float speed) {
-	RightController.Set(speed);
+	RightController.Set(speed/2);
 }
 
 void IntakeRollers::Stop() {
